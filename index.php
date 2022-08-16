@@ -1,7 +1,16 @@
+
+<?php 
+// session_start();
+// if(!isset($_SESSION['user_id'])){
+// header('location:login.php');
+// } else {
+// //show users the page!
+// }
+?>
 <?php 
 include('includes/header.php');
-
 ?>
+
 
 <div class="row">
     <div class="col-sm-12">
