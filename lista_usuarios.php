@@ -1,3 +1,16 @@
+
+<?php 
+include('config.php');
+
+$sql_leer = 'SELECT * FROM users';
+$gsen = $pdo->prepare($sql_leer);
+$gsen->execute();
+
+$result = $gsen->fetchAll();
+
+?>
+
+
 <?php 
 session_start();
 include('includes/header.php');
@@ -40,10 +53,18 @@ include('includes/header.php');
 
 
                         <tbody>
+                            <?php foreach($result as $dato): ?>
                         <tr>
+                            <td><?php echo $dato['id'] ?></td>
+                            <td><?php echo $dato['username'] ?></td>
+                            <td><?php echo $dato['email'] ?></td>
+                            <td class="text-center"><?php if($dato['role'] == 1){ echo '<span class="badge badge-pill badge-success">Super Admin</span>'; }else {
+                                echo '<span class="badge badge-pill badge-info">Admin</span>';
+                            }; ?></td>
                             
+                            <td></td>
                         </tr>
-                        
+                            <?php endforeach ?>
                         </tbody>
                     </table>
 

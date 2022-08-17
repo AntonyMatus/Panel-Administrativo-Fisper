@@ -22,7 +22,7 @@
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-video"></i><span> Vídeos <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                                 <ul class="submenu">
                                     <li><a href="lista_videos.php">Lista Vídeos</a></li>
-                                    <li><a href="email-read.html">Crear Video</a></li>
+                                    <li><a href="crear_video.php">Crear Video</a></li>
                                     
                                 </ul>
                             </li>

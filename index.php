@@ -1,11 +1,12 @@
 
 <?php 
-// session_start();
-// if(!isset($_SESSION['user_id'])){
-// header('location:login.php');
-// } else {
-// //show users the page!
-// }
+session_start();
+
+if(!isset($_SESSION['user_id'])){
+header('location:login.php');
+} else {
+
+}
 ?>
 <?php 
 include('includes/header.php');
@@ -19,6 +20,7 @@ include('includes/header.php');
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">
                     Welcome to Fisper Dashboard
+                    <?php echo $_SESSION['user_id'];?>
                 </li>
             </ol>
            
