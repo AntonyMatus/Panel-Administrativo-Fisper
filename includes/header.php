@@ -18,6 +18,9 @@
         <!-- Responsive datatable examples -->
         <link href="plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
+         <!-- Sweet Alert -->
+         <link href="plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
         <link href="assets/css/icons.css" rel="stylesheet" type="text/css">

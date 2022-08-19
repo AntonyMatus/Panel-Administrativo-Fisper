@@ -47,7 +47,7 @@ include('includes/header.php');
                         <div class="form-group">
                             <label>Password</label>
                             <div>
-                                <input type="password" class="form-control" required id="password" name="password"  placeholder="Enter a password"/>
+                                <input type="password" class="form-control" required  name="password"  placeholder="Enter a password"/>
                             </div>
                         </div>
                     </div>

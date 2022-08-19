@@ -1,17 +1,20 @@
+
 <?php 
 session_start();
 include('includes/header.php');
 ?>
 
+
 <div class="row">
         <div class="col-sm-12">
             <div class="page-title-box">
-                <h4 class="page-title">Crear Vídeo</h4>
+                <h4 class="page-title">Crear Blog</h4>
                 <ol class="breadcrumb">
                 </ol>
             </div>
         </div>
 </div>
+
 <div class="row">
     <div class="col-lg-12">
     <div class="card m-b-20">
@@ -41,17 +44,22 @@ include('includes/header.php');
                 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Link</label>
-                            <div>
-                                <input type="url" class="form-control" required  name="link"  placeholder="https://"/>
+                            <label>Fecha</label>
+                            <div></div>
+                                <input type="date" class="form-control" required  name="date"  placeholder=""/>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Fecha</label>
+                            <label>Status plublicado</label>
                             <div>
-                                <input type="date" class="form-control" required  name="date"  placeholder=""/>
+                                <select name="status" class="form-control">
+                                    <option value="">Seleccione el status</option>
+                                    <option value="0">SI</option>
+                                    <option value="1">NO</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -82,8 +90,6 @@ include('includes/header.php');
         </div>
     </div>
 </div>
-
-
 
 <?php 
 include('includes/footer.php');

@@ -53,7 +53,11 @@ include('includes/header.php');
                                 <td><?php echo $dato['name']; ?></td>
                                 
                                 <td><?php echo $dato['date']; ?></td>
-                                <td class="text-center"><a href="<?php echo "editar_video.php?id=" .$dato['id'] ?>"><i  class="fas fa-pencil-alt" style="color: violet;"></i></a> &nbsp; &nbsp;&nbsp;&nbsp;<a href="<?php echo "delete_video.php?id=" .$dato['id']?>"><i class="fas fa-trash-alt" style="color: #ec536c;"></i></a>  </td>
+                                <td class="text-center">
+                                    <a href="<?php echo "editar_video.php?id=" .$dato['id'] ?>"><i  class="fas fa-pencil-alt" style="color: violet;"></i></a>
+                                     &nbsp; &nbsp;&nbsp;&nbsp;
+                                     <a href="<?php echo "delete_video.php?id=" .$dato['id']?>"><i class="fas fa-trash-alt" style="color: #ec536c;"></i></a>  
+                                </td>
                                
                                 
                             </tr>

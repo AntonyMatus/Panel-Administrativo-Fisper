@@ -393,6 +393,9 @@ dt {
   font-size: 12px;
 }
 
+#password{
+  display: none;
+}
 .font-14 {
   font-size: 14px;
 }

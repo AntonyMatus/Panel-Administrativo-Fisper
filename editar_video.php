@@ -41,7 +41,7 @@ include('includes/header.php');
             <?php include('message.php'); ?>
 
             
-            <form class="" action="edit_video.php" method="POST">
+            <form class="" action="../../backend/videos/edit_video.php" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -76,7 +76,14 @@ include('includes/header.php');
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Imagen</label>
+                            <div>
+                            <input type="file" class="filestyle" name="image" data-buttonname="btn-secondary">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="form-group mb-0">
@@ -90,6 +97,24 @@ include('includes/header.php');
                     </div>
                 </div>
             </form>
+                                    <br><br>
+            <div class="p-6 mb-8 bg-white rounded-lg shadow-md">
+                <div class="flex justify-center">
+                    <div style="position: relative;">
+                    <div class="mt-2 ml-2" style="display: flex; position: absolute;">
+                        <a
+                        class="flex items-center justify-between px-2 py-2 mr-2 text-md font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray bg-white"
+                        aria-label="Edit"
+                        title="Imagen de portada"
+                        >
+                        Imagen de portada
+                        </a>
+                    </div>
+                    <img loading="lazy" src="assets/images/videos/<?php echo $video->img  ?>" />
+                    </div>
+                </div>
+            </div>
+
 
             </div>
         </div>

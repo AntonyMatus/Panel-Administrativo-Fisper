@@ -30,7 +30,7 @@
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fab fa-blogger-b"></i><span> Blog <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                                 <ul class="submenu">
                                     <li><a href="lista_blog.php">Lista Blogs</a></li>
-                                    <li><a href="email-read.html">Crear Blog</a></li>
+                                    <li><a href="crear_blog.php">Crear Blog</a></li>
                                     
                                 </ul>
                             </li>
