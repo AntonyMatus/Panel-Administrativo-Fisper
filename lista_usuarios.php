@@ -1,5 +1,15 @@
 
 <?php 
+session_start();
+
+$is_admin = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
+if(!$is_admin){
+    $_SESSION['message'] = "Usted no tiene Permisos en esta pagina!";
+    header('location:index.php');
+    exit(0);
+    
+} 
+
 include('config.php');
 
 $sql_leer = 'SELECT * FROM users';
@@ -12,7 +22,7 @@ $result = $gsen->fetchAll();
 
 
 <?php 
-session_start();
+
 include('includes/header.php');
 ?>
 
@@ -65,7 +75,7 @@ include('includes/header.php');
                             <td>
                             <a href="<?php echo "editar_usuario.php?id=" .$dato['id'] ?>"><i  class="fas fa-pencil-alt" style="color: violet;"></i></a>
                                      &nbsp; &nbsp;&nbsp;&nbsp;
-                            <a href="<?php echo "delete_users.php?id=" .$dato['id']?>"><i class="fas fa-trash-alt" style="color: #ec536c;"></i></a>  
+                            <a onclick="delete_user(<?php echo $dato['id'] ?>)"><i class="fas fa-trash-alt" style="color: #ec536c;"></i></a>  
                                 
 
                             </td>
@@ -85,3 +95,28 @@ include('includes/footer.php');
 include('includes/scripts.php');
 
 ?>
+<script>
+    function delete_user(id){
+        Swal.fire({
+                title: "Estas seguro de eliminar este Usuario?",
+                text: "!No podrás revertir esto!!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#58db83",
+                cancelButtonColor: "#ec536c",
+                confirmButtonText: "Si, eliminar!",
+                cancelButtonText: 'Cancelar!',
+              }).then(function (result) {
+                    
+                    if(result.value)
+                    {
+                       location.href = 'delete_users.php?id='+id;
+                        Swal.fire(
+                            'Eliminado!',
+                            'El usuario fue eliminado.',
+                            'success'
+                        )
+                    }
+               });
+    }
+</script>

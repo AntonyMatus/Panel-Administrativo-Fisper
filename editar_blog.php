@@ -1,22 +1,38 @@
-
-<?php 
+<?php
 session_start();
-include('includes/header.php');
+if(!isset($_GET['id'])) exit();
+
+$id = $_GET['id'];
+
 include('config.php');
 
+$sql = $pdo->prepare("SELECT * FROM blog WHERE id= ?;");
+$sql->execute([$id]);
+$blog = $sql->fetch(PDO::FETCH_OBJ);
+if($blog === FALSE){
+    echo "No existe alguna persna con ese ID";
+    exit(0);
+}
+
+
 $query = "SELECT * FROM category";
-$sql = $pdo->prepare($query);
-$sql->execute();
-$result = $sql->fetchAll(PDO::FETCH_OBJ);
+$sql_2 = $pdo->prepare($query);
+$sql_2->execute();
+$result = $sql_2->fetchAll(PDO::FETCH_OBJ);
 
 
 ?>
+
+<?php 
+include('includes/header.php');
+?>
+
 
 
 <div class="row">
         <div class="col-sm-12">
             <div class="page-title-box">
-                <h4 class="page-title">Crear Blog</h4>
+                <h4 class="page-title">Editar Blog</h4>
                 <ol class="breadcrumb">
                 </ol>
             </div>
@@ -32,19 +48,20 @@ $result = $sql->fetchAll(PDO::FETCH_OBJ);
             <?php include('message.php'); ?>
 
             
-            <form class="" action="create_blog.php" method="POST" enctype="multipart/form-data">
+            <form class="" action="edit_blog.php" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" class="form-control"  name="name" required placeholder="Escriba el nombre"/>
+                            <input type="hidden" name="id" value="<?php echo $blog->id ?>">
+                            <input type="text" class="form-control"  name="name" required placeholder="Escriba el nombre" value="<?php echo $blog->name?>"/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Descripcion</label>
                             <div>
-                                <input type="text"  name="description" class="form-control" required placeholder="Escriba la descripcion"/>
+                                <input type="text"  name="description" class="form-control" required placeholder="Escriba la descripcion" value="<?php echo $blog->description?>"/>
                             </div>
                         
                         </div>
@@ -54,7 +71,7 @@ $result = $sql->fetchAll(PDO::FETCH_OBJ);
                         <div class="form-group">
                             <label>Fecha</label>
                             <div></div>
-                                <input type="date" class="form-control" required  name="date"  placeholder=""/>
+                                <input type="date" class="form-control" required  name="date"  placeholder="" value="<?php echo $blog->date?>"/>
                             </div>
                         </div>
                     
@@ -65,8 +82,8 @@ $result = $sql->fetchAll(PDO::FETCH_OBJ);
                             <div>
                                 <select name="status" class="form-control">
                                     <option value="">Seleccione el status</option>
-                                    <option value="0">SI</option>
-                                    <option value="1">NO</option>
+                                    <option <?php if($blog->status == 0): ?> selected <?php endif ?> value="0" >SI</option>
+                                    <option <?php if($blog->status == 1): ?> selected <?php endif ?> value="1">NO</option>
                                 </select>
                             </div>
                         </div>
@@ -86,7 +103,7 @@ $result = $sql->fetchAll(PDO::FETCH_OBJ);
                                 <select name="category_id" class="form-control">
                                     <option value="">Seleccione la categoria</option>
                                     <?php foreach($result as $dato): ?>
-                                    <option value="<?php echo $dato->id ?>"><?php echo $dato->name ?></option>
+                                    <option <?php if($dato->id === $blog->category_id): ?> selected <?php endif ?> value="<?php echo $dato->id ?>"><?php echo $dato->name ?></option>
                                     <?php endforeach ?>
                                 </select>
                             </div>
@@ -97,7 +114,7 @@ $result = $sql->fetchAll(PDO::FETCH_OBJ);
                 
                 <div class="form-group mb-0">
                     <div>
-                        <button type="submit" name="register-btn" class="btn btn-primary waves-effect waves-light mr-1">
+                        <button type="submit" name="edit-btn" class="btn btn-primary waves-effect waves-light mr-1">
                             Submit
                         </button>
                         <a  class="btn btn-secondary waves-effect" href="lista_blog.php">
@@ -106,11 +123,28 @@ $result = $sql->fetchAll(PDO::FETCH_OBJ);
                     </div>
                 </div>
             </form>
-
+            <br><br>
+            <div class="p-6 mb-8 bg-white rounded-lg shadow-md">
+                <div class="flex justify-center">
+                    <div style="position: relative;">
+                    <div class="mt-2 ml-2" style="display: flex; position: absolute;">
+                        <a
+                        class="flex items-center justify-between px-2 py-2 mr-2 text-md font-medium leading-5 text-purple-600 rounded-lg focus:outline-none focus:shadow-outline-gray bg-white"
+                        aria-label="Edit"
+                        title="Imagen de portada"
+                        >
+                        Imagen de portada
+                        </a>
+                    </div>
+                    <img loading="lazy" src="assets/images/blogs/<?php echo $blog->img  ?>" />
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <?php 
 include('includes/footer.php');

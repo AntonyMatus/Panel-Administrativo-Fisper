@@ -2,6 +2,15 @@
     session_start();
     include('config.php');
     
+
+    $is_admin = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
+    if(!$is_admin){
+        $_SESSION['message'] = "Usted no tiene Permisos en esta pagina!";
+        header('location: index.php');
+        
+    } 
+
+
     if(isset($_POST['register-btn'])){
         $username = $_POST['username'];
         $email = $_POST['email'];

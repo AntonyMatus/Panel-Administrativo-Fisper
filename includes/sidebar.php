@@ -1,4 +1,5 @@
 <!-- ========== Left Sidebar Start ========== -->
+<?php session_start(); ?>
 <div class="left side-menu">
                 <div class="slimscroll-menu" id="remove-scroll">
 
@@ -8,7 +9,11 @@
                         <ul class="metismenu" id="side-menu">
                             <li class="menu-title">Main</li>
                             
-
+                            <?php  $permission = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
+                            
+                            
+                            ?>
+                            <?php if ($permission): ?>
                             <li>
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-user"></i><span> Usuarios <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                                 <ul class="submenu">
@@ -17,7 +22,7 @@
                                     
                                 </ul>
                             </li>
-
+                            <?php endif ?>
                             <li>
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-video"></i><span> Vídeos <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                                 <ul class="submenu">

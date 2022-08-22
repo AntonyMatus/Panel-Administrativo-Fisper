@@ -21,7 +21,7 @@ include('includes/header.php');
             <?php include('message.php'); ?>
 
             
-            <form class="" action="../../backend/videos/create_video.php" method="POST" enctype="multipart/form-data">
+            <form class="" action="create_video.php" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

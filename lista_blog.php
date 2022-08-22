@@ -3,11 +3,14 @@
 session_start();
 include('config.php');
 
-$query = "SELECT * FROM blog";
+$query = "SELECT P.id, P.name, P.date, C.name AS category FROM blog P JOIN category C ON P.category_id = C.id";
 $blog = $pdo->prepare($query);
 $blog->execute();
 
 $result = $blog->fetchAll();
+
+
+
 
 
 include('includes/header.php');
@@ -22,7 +25,7 @@ include('includes/header.php');
                 
                 
             </ol>
-
+            
             <?php include('message.php'); ?>
         </div>
     </div>
@@ -38,7 +41,7 @@ include('includes/header.php');
 
                     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>#ID</th>
                             <th>Nombre</th>
                             <th>Category</th>
@@ -51,16 +54,16 @@ include('includes/header.php');
 
                         <tbody>
                             <?php foreach($result as $dato): ?>
-                        <tr>
-                            <td><?php echo $dato['id'] ?></td>
+                        <tr class="text-center">
+                            <td class="text-center"><?php echo $dato['id'] ?></td>
                             <td><?php echo $dato['name'] ?></td>
-                            <td><?php echo $dato['description'] ?></td>
+                            <td><?php echo $dato['category'] ?></td>
                             <td ><?php echo $dato['date']?></td>
                             
-                            <td>
+                            <td class="text-center">
                             <a href="<?php echo "editar_blog.php?id=" .$dato['id'] ?>"><i  class="fas fa-pencil-alt" style="color: violet;"></i></a>
                                      &nbsp; &nbsp;&nbsp;&nbsp;
-                            <a href="<?php echo "delete_blog.php?id=" .$dato['id']?>"><i class="fas fa-trash-alt" style="color: #ec536c;"></i></a>  
+                            <a onclick="delete_blog(<?php echo $dato['id'] ?>)"><i class="fas fa-trash-alt" style="color: #ec536c;"></i></a>  
                                 
 
                             </td>
@@ -80,3 +83,29 @@ include('includes/footer.php');
 include('includes/scripts.php');
 
 ?>
+
+<script>
+    function delete_blog(id){
+            Swal.fire({
+                title: "Estas seguro de eliminar este video?",
+                text: "!No podrás revertir esto!!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#58db83",
+                cancelButtonColor: "#ec536c",
+                confirmButtonText: "Si, eliminar!",
+                cancelButtonText: 'Cancelar!',
+              }).then(function (result) {
+                    
+                    if(result.value)
+                    {
+                       location.href = 'delete_blog.php?id='+id;
+                        Swal.fire(
+                            'Eliminado!',
+                            'El usuario fue eliminado.',
+                            'success'
+                        )
+                    }
+               });
+        }
+</script>

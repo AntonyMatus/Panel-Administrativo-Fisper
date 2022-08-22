@@ -18,6 +18,7 @@
         } else {
             if(password_verify($password, $result['password'])){
                 $_SESSION['user_id'] = $result['username'];
+                $_SESSION['role'] = $result['role'];
                 header('location:index.php');
             } else {
                 $_SESSION['message']="Username password combination is wrong!";

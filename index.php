@@ -24,6 +24,7 @@ include('includes/header.php');
                 </li>
             </ol>
            
+            <?php include('message.php'); ?>
         </div>
     </div>
 </div>

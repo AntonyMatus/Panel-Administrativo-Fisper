@@ -1,6 +1,13 @@
 <?php
 
 session_start();
+
+$is_admin = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
+if(!$is_admin){
+    $_SESSION['message'] = "Usted no tiene Permisos en esta pagina!";
+    header('location: index.php');
+    
+} 
 if(!isset($_GET['id'])) exit();
 
 $id = $_GET['id'];

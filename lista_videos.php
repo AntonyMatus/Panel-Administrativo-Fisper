@@ -56,7 +56,7 @@ include('includes/header.php');
                                 <td class="text-center">
                                     <a href="<?php echo "editar_video.php?id=" .$dato['id'] ?>"><i  class="fas fa-pencil-alt" style="color: violet;"></i></a>
                                      &nbsp; &nbsp;&nbsp;&nbsp;
-                                     <a href="<?php echo "delete_video.php?id=" .$dato['id']?>"><i class="fas fa-trash-alt" style="color: #ec536c;"></i></a>  
+                                    <a onclick="delete_video(<?php echo $dato['id'] ?>)" ><i class="fas fa-trash-alt" style="color: #ec536c;"></i></a>  
                                 </td>
                                
                                 
@@ -69,9 +69,35 @@ include('includes/header.php');
             </div>
         </div> <!-- end col -->
     </div> <!-- end row -->
-
+    
+    
 <?php 
 include('includes/footer.php');
 include('includes/scripts.php');
 
 ?>
+<script>
+function delete_video(id){
+            Swal.fire({
+                title: "Estas seguro de eliminar este video?",
+                text: "!No podrás revertir esto!!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#58db83",
+                cancelButtonColor: "#ec536c",
+                confirmButtonText: "Si, eliminar!",
+                cancelButtonText: 'Cancelar!',
+              }).then(function (result) {
+                    
+                    if(result.value)
+                    {
+                       location.href = 'delete_video.php?id='+id;
+                        Swal.fire(
+                            'Eliminado!',
+                            'El usuario fue eliminado.',
+                            'success'
+                        )
+                    }
+               });
+        }
+</script>
