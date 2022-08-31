@@ -24,7 +24,7 @@ if($result === TRUE) {
 
     $image = $_FILES['image']['name'];
     if(!empty($image)){
-        $sql_proj = "SELECT * FROM videos WHERE id= ?";
+        $sql_proj = "SELECT * FROM videos WHERE id= :id";
         $sql_proj_run = $pdo->prepare($sql_proj);
         $sql_proj_run->bindParam(':id', $id, PDO::PARAM_INT);
         $sql_proj_run->execute();

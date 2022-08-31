@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-lg navbar-white bg-green2 border-bottom border-color-white-transparent header-light fixed-top navbar-boxed header-reverse-scroll">
             <div class="container-fluid nav-header-container">
                 <div class="col-6 col-lg-2 me-auto ps-lg-0">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="index.php">
                         <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="default-logo" alt="" >
                         <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="alt-logo" alt="">
                         <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="mobile-logo" alt="">
@@ -41,11 +41,11 @@
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                         <ul class="navbar-nav alt-font">
                             <li class="nav-item dropdown megamenu">
-                                <a href="index.html" class="nav-link">Inicio</a>
+                                <a href="index.php" class="nav-link">Inicio</a>
                                 
                             </li>
                             <li class="nav-item dropdown simple-dropdown">
-                                <a href="nosotros.html" class="nav-link">Nosotros</a>
+                                <a href="nosotros.php" class="nav-link">Nosotros</a>
                                
                             </li>
                             <li class="nav-item dropdown simple-dropdown">
@@ -53,15 +53,15 @@
                                
                             </li>
                             <li class="nav-item dropdown simple-dropdown">
-                                <a href="blog.html" class="nav-link">Blog</a>
+                                <a href="blog.php" class="nav-link">Blog</a>
                                
                             </li>
                             <li class="nav-item dropdown simple-dropdown">
-                                <a href="videos.html" class="nav-link">Vídeos</a>
+                                <a href="videos.php" class="nav-link">Vídeos</a>
                                
                             </li>
                             <li class="nav-item dropdown megamenu">
-                                <a href="contacto.html" class="nav-link">Contacto</a>
+                                <a href="contacto.php" class="nav-link">Contacto</a>
                                 
                             </li>
                             
@@ -74,14 +74,14 @@
     </header>
     <!-- end header -->
         <!-- start hero section -->
-        <section class="p-0 cover-background overlap-height" style="background-image: url('https://via.placeholder.com/1920x1080');">
+        <section class="p-0 cover-background overlap-height" style="background-image: url('client/images/services/banner_services.jpg');">
             <div class="opacity-very-light bg-dark-slate-blue"></div>
             <div class="container position-relative">
                 <div class="row full-screen md-h-800px sm-h-500px">
                     <div class="col-12 col-xl-9 col-lg-6 col-md-7 col-sm-10 d-flex flex-column justify-content-center">
                         <h2 class="alt-font text-dark-gray line-height-65px font-weight-500 letter-spacing-minus-1px margin-65px-bottom sm-line-height-50px sm-margin-25px-bottom">conoce nuestros servicios</h2>
                         <div class="alt-font text-medium font-weight-500 text-uppercase letter-spacing-2px d-flex">
-                            <span class="w-40px h-1px bg-second align-self-center margin-25px-right"></span><span class="alt-font font-weight-500 text-green2 h-2rem">¿En qué podemos ayudarte?</span>
+                            <span class="w-40px h-1px bg-second align-self-center margin-25px-right"></span><span class="alt-font font-weight-900 text-green2 h-3rem">¿En qué podemos ayudarte?</span>
                         </div>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
                         <p class="alt-font">Estamos aquí para asistirte. Llámanos o escríbenos un email o contáctanos mediante nuestros canales sociales</p>
                     </div>
                     <div class="col-12 col-xl-5 col-md-4 text-center text-md-end wow animate__fadeIn" data-wow-delay="0.2s">
-                        <a href="contacto.html" class="btn btn-large btn-round-edge btn-brown2 btn-slide-right-bg">Contacto<span class="bg-brown2"></span></a>
+                        <a href="contacto.php" class="btn btn-large btn-round-edge btn-brown2 btn-slide-right-bg">Contacto<span class="bg-brown2"></span></a>
                     </div>
                 </div>
             </div>

@@ -25,7 +25,7 @@
             <nav class="navbar navbar-expand-lg navbar-white bg-green2 border-bottom border-color-white-transparent header-light fixed-top navbar-boxed header-reverse-scroll">
                 <div class="container-fluid nav-header-container">
                     <div class="col-6 col-lg-2 me-auto ps-lg-0">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="index.php">
                             <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="default-logo" alt="" >
                             <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="alt-logo" alt="">
                             <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="mobile-logo" alt="">
@@ -41,7 +41,7 @@
                         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                             <ul class="navbar-nav alt-font">
                                 <li class="nav-item dropdown megamenu">
-                                    <a href="index.html" class="nav-link">Inicio</a>
+                                    <a href="index.php" class="nav-link">Inicio</a>
                                     
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
@@ -49,15 +49,15 @@
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="Servicios.html" class="nav-link">Servicios</a>
+                                    <a href="Servicios.php" class="nav-link">Servicios</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="blog.html" class="nav-link">Blog</a>
+                                    <a href="blog.php" class="nav-link">Blog</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="videos.html" class="nav-link">Vídeos</a>
+                                    <a href="videos.php" class="nav-link">Vídeos</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown megamenu">
@@ -74,8 +74,8 @@
         </header>
         <!-- end header -->
         <!-- start page title -->
-        <section class="parallax" data-parallax-background-ratio="0.5" style="background-image:url('https://via.placeholder.com/1920x1100');">
-            <div class="opacity-extra-medium bg-extra-dark-gray"></div>
+        <section class="parallax" data-parallax-background-ratio="0.5" style="background-image:url('client/images/nosotros/baneer_nosotros.jpg');">
+            
             <div class="container">
                 <div class="row align-items-stretch justify-content-center small-screen">
                     <div class="col-12 position-relative page-title-extra-small text-center d-flex  justify-content-center flex-column">
@@ -90,16 +90,16 @@
       
        
         <!-- start section -->
-        <section class="wow animate__fadeIn">
+        <section id="about" class="wow animate__fadeIn">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-12 col-lg-6 md-margin-50px-bottom wow animate__fadeIn">
                         <!-- start slider -->
                         <div class="swiper-container white-move border-all border-width-12px border-color-white box-shadow-large border-radius-8px" data-slider-options='{ "slidesPerView": 1, "loop": true, "navigation": { "nextEl": ".swiper-button-next-nav", "prevEl": ".swiper-button-previous-nav" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "slide" }'>
                             <div class="swiper-wrapper">
-                                <!-- start slider item --><div class="swiper-slide"><img src="https://via.placeholder.com/900x700" alt=""></div><!-- end slider item -->
-                                <!-- start slider item --><div class="swiper-slide"><img src="https://via.placeholder.com/900x700" alt=""></div><!-- end slider item -->
-                                <!-- start slider item --><div class="swiper-slide"><img src="https://via.placeholder.com/900x700" alt=""></div><!-- end slider item -->
+                                <!-- start slider item --><div class="swiper-slide"><img src="client/images/nosotros/fisper.jpg" alt="" width="100%"></div><!-- end slider item -->
+                                <!-- start slider item --><div class="swiper-slide"><img src="client/images/nosotros/fisper.jpg" alt="" width="100%"></div><!-- end slider item -->
+                                <!-- start slider item --><div class="swiper-slide"><img src="client/images/nosotros/fisper.jpg" alt="" width="100%"></div><!-- end slider item -->
                             </div>  
                             <!-- start slider navigation -->
                             <div class="swiper-button-next-nav swiper-button-next slider-navigation-style-01 light"><i class="feather icon-feather-arrow-right" aria-hidden="true"></i></div>
@@ -133,7 +133,7 @@
                         <p class="alt-font">Estamos aquí para asistirte. Llámanos o escríbenos un email o contáctanos mediante nuestros canales sociales</p>
                     </div>
                     <div class="col-12 col-xl-5 col-md-4 text-center text-md-end wow animate__fadeIn" data-wow-delay="0.2s">
-                        <a href="contacto.html" class="btn btn-large btn-round-edge btn-brown2 btn-slide-right-bg text-white">Contacto<span class="bg-brown2"></span></a>
+                        <a href="contacto.php" class="btn btn-large btn-round-edge btn-brown2 btn-slide-right-bg text-white">Contacto<span class="bg-brown2"></span></a>
                     </div>
                 </div>
             </div>

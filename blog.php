@@ -1,3 +1,85 @@
+<?php 
+session_start();
+
+require 'Admin/config.php';
+
+$page = isset($_GET["page"]) ? intval($_GET["page"]) : 1;
+$category = (isset($_GET["category"]) && !empty($_GET["category"])) ? intval($_GET["category"]) : null;
+$search = (isset($_GET["search"]) && !empty($_GET["search"])) ? strval($_GET["search"]) : null;
+$itemsPerPage = 1;
+$limit = $itemsPerPage;
+$offset = ($page - 1) * $itemsPerPage;
+$pages = 0;
+$blogs = [];
+
+
+if(!is_null($search)) {
+
+    $qSearch = "%$search%";
+
+    //count
+    $sqlForCount = "SELECT count(*) as count FROM blog WHERE status = 0 AND name LIKE ?";
+    $queryCount = $pdo->prepare($sqlForCount);
+    $queryCount->execute([$qSearch]);
+    $count = $queryCount->fetchObject()->count;
+    $pages = ceil($count / $itemsPerPage);
+
+    // posts
+    $sqlForPosts = "SELECT P.id, P.name, P.description, P.img, C.name AS category FROM blog P JOIN category C ON P.category_id = C.id WHERE P.status = 0 AND P.name LIKE ?";
+    $queryPosts = $pdo->prepare($sqlForPosts);
+    $queryPosts->execute([$qSearch]);
+    $blogs = $queryPosts->fetchAll(PDO::FETCH_OBJ);
+
+}
+
+if (is_null($category) && is_null($search)) {
+
+          // count
+          $sqlForCount = $pdo->query("SELECT count(*) as count FROM blog WHERE status = 0");
+          $count = $sqlForCount->fetchObject()->count;
+          $pages = ceil($count / $itemsPerPage);
+  
+        
+           // posts
+            $sqlForPosts = "SELECT P.id, P.name, P.description, P.img, C.name AS category FROM blog P JOIN category C ON P.category_id = C.id WHERE status = 0 LIMIT :lop OFFSET :osf";
+            $query = $pdo->prepare($sqlForPosts); 
+            $query->bindValue(':lop', (int) trim($limit), PDO::PARAM_INT);
+            $query->bindValue(':osf', (int) trim($offset), PDO::PARAM_INT);
+            $query->execute(); 
+            $blogs = $query->fetchAll(PDO::FETCH_OBJ);
+}
+
+if (!is_null($category) && is_null($search)) {
+
+         // count
+         $sqlForCount = "SELECT count(*) as count FROM blog WHERE status = 0 AND category_id = :category_id";
+         $queryCount = $pdo->prepare($sqlForCount);
+         $queryCount->bindParam(':category_id', $category, PDO::PARAM_INT);
+         $queryCount->execute();
+         $count = $queryCount->fetchObject()->count;
+         $pages = ceil($count / $itemsPerPage);
+
+         // posts
+         $sqlForPosts = "SELECT P.id, P.name, P.description, P.img, C.name AS category FROM blog P JOIN category C ON P.category_id = C.id WHERE status = 0 AND category_id = ?";
+         $query = $pdo->prepare($sqlForPosts); 
+         $query->execute([$category]); 
+         $blogs = $query->fetchAll(PDO::FETCH_OBJ);
+
+}
+
+
+$sqlCategories = "SELECT `category`.*,(SELECT count(*) FROM `blog` WHERE `category`.`id` = `blog`.`category_id` AND status = 0) as `blogs_count` FROM `category`";
+$querycategories = $pdo->prepare($sqlCategories);
+$querycategories->execute();
+
+$categories = $querycategories->fetchAll(PDO::FETCH_OBJ);
+
+
+?>
+
+
+
+
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -25,7 +107,7 @@
             <nav class="navbar navbar-expand-lg navbar-white bg-green2 border-bottom border-color-white-transparent header-light fixed-top navbar-boxed header-reverse-scroll">
                 <div class="container-fluid nav-header-container">
                     <div class="col-6 col-lg-2 me-auto ps-lg-0">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="index.php">
                             <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="default-logo" alt="" >
                             <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="alt-logo" alt="">
                             <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="mobile-logo" alt="">
@@ -41,15 +123,15 @@
                         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                             <ul class="navbar-nav alt-font">
                                 <li class="nav-item dropdown megamenu">
-                                    <a href="index.html" class="nav-link">Inicio</a>
+                                    <a href="index.php" class="nav-link">Inicio</a>
                                     
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                                    <a href="nosotros.php" class="nav-link">Nosotros</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="Servicios.html" class="nav-link">Servicios</a>
+                                    <a href="Servicios.php" class="nav-link">Servicios</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
@@ -57,11 +139,11 @@
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="videos.html" class="nav-link">Vídeos</a>
+                                    <a href="videos.php" class="nav-link">Vídeos</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown megamenu">
-                                    <a href="contacto.html" class="nav-link">Contacto</a>
+                                    <a href="contacto.php" class="nav-link">Contacto</a>
                                     
                                 </li>
                                 
@@ -78,6 +160,7 @@
                 <div class="row align-items-stretch justify-content-center extra-small-screen">
                     <div class="col-12 col-xl-6 col-lg-7 col-md-8 page-title-extra-small text-center d-flex justify-content-center flex-column">
                          <h2 class="text-green2 alt-font font-weight-500 letter-spacing-minus-1px line-height-50 sm-line-height-45 xs-line-height-30 no-margin-bottom">FISPER BLOG</h2>
+                         
                     </div>
                 </div>
             </div>
@@ -88,82 +171,74 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-8 right-sidebar md-margin-60px-bottom sm-margin-40px-bottom">
+                        <?php foreach($blogs as $blog): ?>
                         <!-- start blog item --> 
                         <div class="col-12 blog-post-content border-all border-color-medium-gray border-radius-6px overflow-hidden text-center p-0 margin-4-half-rem-bottom wow animate__fadeIn">
-                            <div class="blog-image"><a href="#"><img src="https://via.placeholder.com/800x563" alt=""/></a></div>
+                            <div class="blog-image">
+                                <a href="single_blog.php?id=<?php echo $blog->id ?>">
+                                    <img loading="lazy" src="Admin/assets/images/blogs/<?php echo $blog->img ?>" alt="imagen de portada"/>
+                                </a>
+                            </div>
                             <div class="blog-text d-inline-block w-100">
                                 <div class="content padding-5-half-rem-all lg-padding-4-half-rem-all xs-padding-20px-lr xs-padding-40px-tb position-relative mx-auto w-90 lg-w-100">
-                                    <div class="blog-details-overlap text-small font-weight-500 bg-green2 border-radius-4px alt-font text-white text-uppercase"><a href="#" class="text-white">Fisper</a> <span class="margin-5px-lr">•</span> <a href="#" class="text-white">Category name</a></div>
-                                    <h6 class="alt-font font-weight-500"><a href="#" class="text-extra-dark-gray text-fast-blue-hover">Blog Entry #1</a></h6>
-                                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s, unknown printer took a galley of type...</p>
-                                    <a href="#" class="btn btn-small btn-brown2 btn-round-edge btn-slide-up-bg margin-10px-top">View More<span class="btn-brown2"></span></a>
+                                    <div class="blog-details-overlap text-small font-weight-500 bg-green2 border-radius-4px alt-font text-white text-uppercase">
+                                        <a href="#" class="text-white">Fisper</a> 
+                                        <span class="margin-5px-lr">•</span> 
+                                        <a  class="text-white"><?php echo $blog->category ?></a>
+                                    </div>
+                                    <h6 class="alt-font font-weight-500">
+                                        <a href="single_blog.php?id=<?php echo $blog->id ?>" class="text-extra-dark-gray text-fast-blue-hover"><?php echo $blog->name ?>
+                                    </a>
+                                </h6>
+                                    <p><?php echo $blog->description ?>
+                                </p>
+                                    <a href="single_blog.php?id=<?php echo $blog->id ?>" class="btn btn-small btn-brown2 btn-round-edge btn-slide-up-bg margin-10px-top">Ver más<span class="btn-brown2"></span></a>
                                 </div>
                                
                             </div>
                         </div>
                         <!-- end blog item -->
-                        <!-- start blog item --> 
-                        <div class="col-12 blog-post-content border-all border-color-medium-gray border-radius-6px overflow-hidden text-center p-0 margin-4-half-rem-bottom wow animate__fadeIn">
-                            <div class="blog-image"><a href="#"><img src="https://via.placeholder.com/800x563" alt=""/></a></div>
-                            <div class="blog-text d-inline-block w-100">
-                                <div class="content padding-5-half-rem-all lg-padding-4-half-rem-all xs-padding-20px-lr xs-padding-40px-tb position-relative mx-auto w-90 lg-w-100">
-                                    <div class="blog-details-overlap text-small font-weight-500 bg-green2 border-radius-4px alt-font text-white text-uppercase"><a href="#" class="text-white">Fisper</a> <span class="margin-5px-lr">•</span> <a href="#" class="text-white">Category name</a></div>
-                                    <h6 class="alt-font font-weight-500"><a href="#" class="text-extra-dark-gray text-fast-blue-hover">Blog Entry #2</a></h6>
-                                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s, unknown printer took a galley of type...</p>
-                                    <a href="#" class="btn btn-small btn-brown2 btn-round-edge btn-slide-up-bg margin-10px-top">View More<span class="btn-brown2"></span></a>
-                                </div>
-                               
-                            </div>
-                        </div>
-                        <!-- end blog item -->
-                        <!-- start blog item --> 
-                        <div class="col-12 blog-post-content border-all border-color-medium-gray border-radius-6px overflow-hidden text-center p-0 margin-4-half-rem-bottom wow animate__fadeIn">
-                            <div class="blog-image"><a href="#"><img src="https://via.placeholder.com/800x563" alt=""/></a></div>
-                            <div class="blog-text d-inline-block w-100">
-                                <div class="content padding-5-half-rem-all lg-padding-4-half-rem-all xs-padding-20px-lr xs-padding-40px-tb position-relative mx-auto w-90 lg-w-100">
-                                    <div class="blog-details-overlap text-small font-weight-500 bg-green2 border-radius-4px alt-font text-white text-uppercase"><a href="#" class="text-white">Fisper</a> <span class="margin-5px-lr">•</span> <a href="#" class="text-white">Category name</a></div>
-                                    <h6 class="alt-font font-weight-500"><a href="#" class="text-extra-dark-gray text-fast-blue-hover">Blog Entry #3</a></h6>
-                                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s, unknown printer took a galley of type...</p>
-                                    <a href="#" class="btn btn-small btn-brown2 btn-round-edge btn-slide-up-bg margin-10px-top">View More<span class="btn-brown2"></span></a>
-                                </div>
-                               
-                            </div>
-                        </div>
-                        <!-- end blog item -->
-                        <!-- start blog item --> 
-                        <div class="col-12 blog-post-content border-all border-color-medium-gray border-radius-6px overflow-hidden text-center p-0 margin-4-half-rem-bottom wow animate__fadeIn">
-                            <div class="blog-image"><a href="#"><img src="https://via.placeholder.com/800x563" alt=""/></a></div>
-                            <div class="blog-text d-inline-block w-100">
-                                <div class="content padding-5-half-rem-all lg-padding-4-half-rem-all xs-padding-20px-lr xs-padding-40px-tb position-relative mx-auto w-90 lg-w-100">
-                                    <div class="blog-details-overlap text-small font-weight-500 bg-green2 border-radius-4px alt-font text-white text-uppercase"><a href="#" class="text-white">Fisper</a> <span class="margin-5px-lr">•</span> <a href="#" class="text-white">Category name</a></div>
-                                    <h6 class="alt-font font-weight-500"><a href="#" class="text-extra-dark-gray text-fast-blue-hover">Blog Entry #4</a></h6>
-                                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s, unknown printer took a galley of type...</p>
-                                    <a href="#" class="btn btn-small btn-brown2 btn-round-edge btn-slide-up-bg margin-10px-top">View More<span class="btn-brown2"></span></a>
-                                </div>
-                               
-                            </div>
-                        </div>
-                        <!-- end blog item -->
+                        <?php endforeach ?>
+                        <?php if($pages > 1) { ?>
                         <!-- start pagination -->
                         <div class="col-12 d-flex justify-content-center margin-7-half-rem-top lg-margin-5-rem-top xs-margin-4-rem-top wow animate__fadeIn">
+                            <?php $queryParams = '&category=' . $category . '&search=' . $search; ?>
                             <ul class="pagination pagination-style-01 text-small font-weight-500 align-items-center">
-                                <li class="page-item"><a class="page-link" href="#"><i class="feather icon-feather-arrow-left icon-extra-small d-xs-none"></i></a></li>
-                                <li class="page-item"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                <li class="page-item"><a class="page-link" href="#">04</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><i class="feather icon-feather-arrow-right icon-extra-small  d-xs-none"></i></a></li>
-                            </ul>
+                                <li class="page-item">
+                                    <a class="page-link"
+                                    <?php if ($page > 1) { ?>
+                                     href="blog.php?page=<?php echo $page - 1 ?> <?php echo $queryParams ?>" <?php }?>>
+                                     <i class="feather icon-feather-arrow-left icon-extra-small d-xs-none"></i>
+                                    </a>
+                                </li>
+                                <?php for($i = 1; $i <= $pages; $i++) { ?>
+                                <li class="page-item <?php if($i == $page) {echo 'active';} ?>"> 
+                                    <a class="page-link" href="blog.php?page=<?php echo $i ?><?php echo $queryParams ?>"><?php echo $i ?></a>
+                                </li>
+                                <?php } ?>
+                                <li class="page-item">
+                                    <a class="page-link"
+                                    <?php if($page < $pages) {?> href="blog.php?page=<?php echo $page + 1 ?><?php echo $queryParams ?>" <?php } ?>>
+                                     <i class="feather icon-feather-arrow-right icon-extra-small  d-xs-none"></i>
+                                    </a>
+                                </li>
+                             </ul>
                         </div>
                         <!-- end pagination -->
+                        <?php } ?>
                     </div>
                     <!-- start sidebar -->
                     <aside class="col-12 col-xl-3 offset-xl-1 col-lg-4 col-md-7 blog-sidebar lg-padding-4-rem-left md-padding-15px-left">
                         <div class="d-inline-block w-100 margin-5-rem-bottom">
                             <span class="alt-font font-weight-500 text-large text-green2 d-block margin-25px-bottom">Search posts</span>
-                            <form id="search-form" role="search" method="get" action="search-result.html">
+                            <form id="search-form" role="search" method="get" action="blog.php">
                                 <div class="position-relative">
-                                    <input class="search-input medium-input border-color-medium-gray border-radius-4px mb-0" placeholder="Enter your keywords..." name="s" value="" type="text" autocomplete="off" />
+                                    <input 
+                                    type="text"
+                                    name="search"
+                                    class="search-input medium-input border-color-medium-gray border-radius-4px mb-0"
+                                    placeholder="Enter your keywords..."  
+                                    value="<?php echo (isset($_GET["search"]) && !empty($_GET["search"])) ? strval($_GET["search"]) : '' ?>"   />
                                     <button type="submit" class="bg-transparent btn text-green2 position-absolute right-5px top-8px text-medium md-top-8px sm-top-10px search-button"><i class="feather icon-feather-search ms-0"></i></button>
                                 </div> 
                             </form>
@@ -174,7 +249,7 @@
                             <span class="text-medium d-block line-height-18px margin-20px-bottom">Blog entry</span>
                             <p>Lorem ipsum is simply dummy text of the printing and industry lorem ipsum has been standard.</p>
                             <div class="social-icon-style-02 text-center">
-                                <ul class="extra-small-icon">
+                                <ul class="extra-small-icon2 ">
                                     <li class="mx-0"><a class="facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i><span></span></a></li>
                                     <li class="mx-0"><a class="instagram" href="#" target="_blank"><i class="fab fa-instagram"></i><span></span></a></li>
                                     <li class="mx-0"><a class="whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i><span></span></a></li>
@@ -184,12 +259,13 @@
                         <div class="margin-5-rem-bottom xs-margin-35px-bottom wow animate__fadeIn">
                             <span class="alt-font font-weight-500 text-large text-green2 d-block margin-35px-bottom">Categories</span>
                             <ul class="list-style-07 list-unstyled">
-                                <li><a href="blog-grid.html">Entertainment</a><span class="item-qty">10</span></li>
-                                <li><a href="blog-grid.html">Business</a><span class="item-qty">05</span></li>
-                                <li><a href="blog-grid.html">Creative</a><span class="item-qty">03</span></li>
-                                <li><a href="blog-grid.html">Lifestyle</a><span class="item-qty">02</span></li>
-                                <li><a href="blog-grid.html">Fashion</a><span class="item-qty">19</span></li>
-                                <li><a href="blog-grid.html">Design</a><span class="item-qty">21</span></li>
+                                <?php foreach($categories as $category): ?>
+                                <li>
+                                    <a href="blog.php?page=1&category=<?php echo $category->id ?>"><?php echo $category->name ?></a>
+                                    <span class="item-qty"> <?php echo $category->blogs_count ?></span>
+                                </li>
+                                <?php endforeach ?>
+                            
                             </ul>
                         </div>
                         

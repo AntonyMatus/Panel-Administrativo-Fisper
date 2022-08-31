@@ -25,7 +25,7 @@
             <nav class="navbar navbar-expand-lg navbar-white bg-green2 border-bottom border-color-white-transparent header-light fixed-top navbar-boxed header-reverse-scroll">
                 <div class="container-fluid nav-header-container">
                     <div class="col-6 col-lg-2 me-auto ps-lg-0">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="index.php">
                             <img src="client/images/logos/logo-white.svg" data-at2x="client/images/logos/logo-white.svg" class="default-logo" alt="" >
                             <img src="client/images/logos/logo-white.svg" data-at2x="client/images/logos/logo-white.svg" class="alt-logo" alt="">
                             <img src="client/images/logos/logo-white.svg" data-at2x="client/images/logos/logo-white.svg" class="mobile-logo" alt="">
@@ -41,23 +41,23 @@
                         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                             <ul class="navbar-nav alt-font">
                                 <li class="nav-item dropdown megamenu">
-                                    <a href="index.html" class="nav-link">Inicio</a>
+                                    <a href="index.php" class="nav-link">Inicio</a>
                                     
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                                    <a href="nosotros.php" class="nav-link">Nosotros</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="Servicios.html" class="nav-link">Servicios</a>
+                                    <a href="Servicios.php" class="nav-link">Servicios</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="blog.html" class="nav-link">Blog</a>
+                                    <a href="blog.php" class="nav-link">Blog</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="videos.html" class="nav-link">Vídeos</a>
+                                    <a href="videos.php" class="nav-link">Vídeos</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown megamenu">
@@ -74,8 +74,8 @@
         </header>
         <!-- end header -->
         <!-- start page title -->
-        <section class="parallax" data-parallax-background-ratio="0.5" >
-            <div class="opacity-medium bg-gradient-fast-blue-purple"></div>
+        <section class="parallax" data-parallax-background-ratio="0.5"  style="background-image: url('client/images/contact/contact_banner.jpg');">
+            
             <div class="container">
                 <div class="row align-items-stretch justify-content-center extra-small-screen">
                     <div class="col-12 position-relative page-title-large text-left d-flex  justify-content-center flex-column">

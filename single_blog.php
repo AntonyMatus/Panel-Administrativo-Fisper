@@ -1,7 +1,27 @@
+
+<?php 
+require 'Admin/config.php';
+
+$id = intval($_GET['id']);
+
+$sql = "SELECT * FROM blog WHERE id = :id AND status = 0";
+$query = $pdo->prepare($sql);
+$query->bindParam(':id', $id, PDO::PARAM_STR);
+$query->execute();
+
+$blog = $query->fetch(PDO::FETCH_OBJ);
+
+if(! $blog){
+    header('location:blog.php');
+}
+?>
+
+
+
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
-        <title>Single Blog | FISPER</title>
+        <title><?php echo $blog->name ?> | FISPER | </title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="Búho Solutions">
@@ -25,7 +45,7 @@
             <nav class="navbar navbar-expand-lg navbar-white bg-green2 border-bottom border-color-white-transparent header-light fixed-top navbar-boxed header-reverse-scroll">
                 <div class="container-fluid nav-header-container">
                     <div class="col-6 col-lg-2 me-auto ps-lg-0">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="index.php">
                             <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="default-logo" alt="" >
                             <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="alt-logo" alt="">
                             <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="mobile-logo" alt="">
@@ -81,12 +101,18 @@
                         <div class="row">
                             <div class="col-12 blog-details-text last-paragraph-no-margin margin-6-rem-bottom">
                                 <ul class="list-unstyled margin-2-rem-bottom">
-                                    <li class="d-inline-block align-middle margin-25px-right"><i class="feather icon-feather-calendar text-green2 margin-10px-right"></i><a href="">09 January 2020</a></li>
+                                    <li class="d-inline-block align-middle margin-25px-right"><i class="feather icon-feather-calendar text-green2 margin-10px-right"></i><a><?php echo date("d M Y", strtotime($blog->date)) ?></a></li>
                                     </ul>
-                                <h5 class="alt-font font-weight-500 text-green2 margin-4-half-rem-bottom">We believe people deserve to earn a living doing what they love - standard post</h5>
-                                <img src="https://via.placeholder.com/780x500" alt="" class="w-100 border-radius-6px margin-4-half-rem-bottom">
-                                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic.</p>
-                                <p>There are many variations of passages of lorem ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of lorem ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+                                <h5 class="alt-font font-weight-500 text-green2 margin-4-half-rem-bottom">
+                                    <?php echo $blog->name ?>
+                                </h5>
+                                <img 
+                                loading="lazy"
+                                src="Admin/assets/images/blogs/<?php echo $blog->img ?>" 
+                                alt="Imagen de portada"
+                                class="w-100 border-radius-6px margin-4-half-rem-bottom">
+                                <p><?php echo $blog->description ?></p>
+                                
                                </div>
                                                    
                         </div>

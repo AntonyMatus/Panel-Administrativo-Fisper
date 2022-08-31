@@ -25,7 +25,7 @@
             <nav class="navbar navbar-expand-lg navbar-white bg-green2 border-bottom border-color-white-transparent header-light fixed-top navbar-boxed header-reverse-scroll">
                 <div class="container-fluid nav-header-container">
                     <div class="col-6 col-lg-2 me-auto ps-lg-0">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="index.php">
                             <img src="client/images/logos/logo-white.svg" data-at2x="client/images/logos/logo-white.svg" class="default-logo" alt="" >
                             <img src="client/images/logos/logo-white.svg" data-at2x="client/images/logos/logo-white.svg" class="alt-logo" alt="">
                             <img src="client/images/logos/logo-white.svg" data-at2x="client/images/logos/logo-white.svg" class="mobile-logo" alt="">
@@ -45,23 +45,23 @@
                                     
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                                    <a href="nosotros.php" class="nav-link">Nosotros</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="Servicios.html" class="nav-link">Servicios</a>
+                                    <a href="Servicios.php" class="nav-link">Servicios</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="blog.html" class="nav-link">Blog</a>
+                                    <a href="blog.php" class="nav-link">Blog</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="videos.html" class="nav-link">Vídeos</a>
+                                    <a href="videos.php" class="nav-link">Vídeos</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown megamenu">
-                                    <a href="contacto.html" class="nav-link">Contacto</a>
+                                    <a href="contacto.php" class="nav-link">Contacto</a>
                                     
                                 </li>
                                 
@@ -78,7 +78,7 @@
             <div class="swiper-container white-move mobileoff-fullscreen-top-space md-h-600px sm-h-500px" data-slider-options='{ "slidesPerView": 1, "loop": true, "pagination": { "el": ".swiper-pagination", "clickable": true }, "navigation": { "nextEl": ".swiper-button-next-nav", "prevEl": ".swiper-button-previous-nav" }, "autoplay": { "delay": 4500, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "slide" }'>
                 <div class="swiper-wrapper">
                     <!-- start slider item -->
-                    <div class="swiper-slide cover-background" style="background-image:url('https://via.placeholder.com/1920x900');">
+                    <div class="swiper-slide cover-background" style="background-image:url('client/images/slider/slider1.jpg');">
                         <div class="overlay-bg bg-gradient-dark-slate-blue"></div>
                         <div class="container h-100">
                             <div class="row h-100">
@@ -94,7 +94,7 @@
                     </div>
                     <!-- end slider item -->
                     <!-- start slider item -->
-                    <div class="swiper-slide cover-background" style="background-image:url('https://via.placeholder.com/1920x900');">
+                    <div class="swiper-slide cover-background" style="background-image:url('client/images/slider/slider2.jpg');">
                         <div class="overlay-bg bg-gradient-dark-slate-blue"></div>
                         <div class="container h-100">
                             <div class="row h-100">
@@ -110,7 +110,7 @@
                     </div>
                     <!-- end slider item -->
                     <!-- start slider item -->
-                    <div class="swiper-slide cover-background" style="background-image:url('https://via.placeholder.com/1920x900');">
+                    <div class="swiper-slide cover-background" style="background-image:url('client/images/slider/slider3.jpg');">
                         <div class="overlay-bg bg-gradient-dark-slate-blue"></div>
                         <div class="container h-100">
                             <div class="row h-100">
@@ -198,7 +198,7 @@
             <div class="container">
                 <div class="row align-items-center overlap-gap-section">
                     <div class="col-12 col-lg-5 md-margin-25px-bottom text-center text-sm-start wow animate__zoomIn" data-wow-delay="0.1s">
-                        <img src="https://via.placeholder.com/429x238" alt=""/>
+                        <img src="client/images/bg-youtube.jpg" alt=""/>
                     </div>
                     
                     <div class="col-12 col-lg-7 text-center text-sm-start padding-6-rem-left lg-padding-15px-left wow animate__fadeIn" data-wow-delay="0.5s">
@@ -250,7 +250,7 @@
                             Nuestra visión es ser una empresa líder en el ámbito contable, basándonos en la calidad y profesionalismo de nuestros servicios, brindando satisfacción a nuestros clientes. Respaldadas en la más alta confidencialidad y calidad de nuestros profesionales que dirigen, basadas en principios y valores a fin de contribuir al logro de los objetivos a corto, mediano y largo plazo y contribuir al desarrollo económico y humano de la comunidad.</p>
                         <a href="our-services.html" class="btn btn-fancy btn-large btn-white margin-20px-top">View services</a>
                     </div>
-                    <div class="col-12 col-lg-6 cover-background md-h-550px sm-h-400px xs-h-300px wow animate__fadeInLeft" data-wow-delay="0.2s" style="background-image: url('https://via.placeholder.com/1021x682');"></div>
+                    <div class="col-12 col-lg-6 cover-background md-h-550px sm-h-400px xs-h-300px wow animate__fadeInLeft" data-wow-delay="0.2s" style="background-image: url('client/images/mision.jpg');"></div>
                     
                 </div>
             </div>
@@ -271,7 +271,7 @@
                     <div class="col team-style-01 text-center md-margin-30px-bottom xs-margin-15px-bottom wow animate__fadeIn" data-wow-delay="0.2s">
                         <figure class="border-radius-5px">
                             <div class="team-member-image">
-                                <img alt="" src="https://via.placeholder.com/525x539">
+                                <img alt="" src="client/images/services/service1.jpg">
                                 <div class="team-overlay bg-transparent-gradient-shamrock-green-light-orange"></div>
                             </div>
                             <figcaption class="align-items-center justify-content-left d-flex flex-column padding-20px-lr padding-30px-tb">
@@ -289,7 +289,7 @@
                     <div class="col team-style-01 text-center md-margin-30px-bottom xs-margin-15px-bottom wow animate__fadeIn" data-wow-delay="0.4s">
                         <figure class="border-radius-5px">
                             <div class="team-member-image">
-                                <img alt="" src="https://via.placeholder.com/525x539">
+                                <img alt="" src="client/images/services/service3.jpg">
                                 <div class="team-overlay bg-transparent-gradient-shamrock-green-light-orange"></div>
                             </div>
                             <figcaption class="align-items-center justify-content-left d-flex flex-column padding-20px-lr padding-30px-tb">
@@ -305,7 +305,7 @@
                     <div class="col team-style-01 text-center xs-margin-15px-bottom wow animate__fadeIn" data-wow-delay="0.6s">
                         <figure class="border-radius-5px">
                             <div class="team-member-image">
-                                <img alt="" src="https://via.placeholder.com/525x539">
+                                <img alt="" src="client/images/services/service5.jpg">
                                 <div class="team-overlay bg-transparent-gradient-shamrock-green-light-orange"></div>
                                 
                             </div>
@@ -335,7 +335,7 @@
                     <div class="col team-style-01 text-center md-margin-30px-bottom xs-margin-15px-bottom wow animate__fadeIn" data-wow-delay="0.4s">
                         <figure class="border-radius-5px">
                             <div class="team-member-image">
-                                <img alt="" src="https://via.placeholder.com/525x539">
+                                <img alt="" src="client/images/services/service2.jpg">
                                 <div class="team-overlay bg-transparent-gradient-shamrock-green-light-orange"></div>
                             </div>
                             <figcaption class="align-items-center justify-content-left d-flex flex-column padding-20px-lr padding-30px-tb">
@@ -354,7 +354,7 @@
                     <div class="col team-style-01 text-center md-margin-30px-bottom xs-margin-15px-bottom wow animate__fadeIn" data-wow-delay="0.4s">
                         <figure class="border-radius-5px">
                             <div class="team-member-image">
-                                <img alt="" src="https://via.placeholder.com/525x539">
+                                <img alt="" src="client/images/services/service4.jpg">
                                 <div class="team-overlay bg-transparent-gradient-shamrock-green-light-orange"></div>
                             </div>
                             <figcaption class="align-items-center justify-content-left d-flex flex-column padding-20px-lr padding-30px-tb">
@@ -371,7 +371,7 @@
                     <div class="col team-style-01 text-center md-margin-30px-bottom xs-margin-15px-bottom wow animate__fadeIn" data-wow-delay="0.4s">
                         <figure class="border-radius-5px">
                             <div class="team-member-image">
-                                <img alt="" src="https://via.placeholder.com/525x539">
+                                <img alt="" src="client/images/services/service6.jpg">
                                 <div class="team-overlay bg-transparent-gradient-shamrock-green-light-orange"></div>
                             </div>
                             <figcaption class="align-items-center justify-content-left d-flex flex-column padding-20px-lr padding-30px-tb">
