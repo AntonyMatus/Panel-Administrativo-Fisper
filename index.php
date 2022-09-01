@@ -86,7 +86,7 @@
                                     <p class="alt-font text-extra-medium text-white opacity-7 font-weight-300 margin-40px-bottom xs-margin-20px-bottom">Somos una empresa enfocada en la asesoría integral empresarial, con el objetivo de ver crecer tu negocio.</p>
                                     <h2 class="alt-font text-shadow-double-large font-weight-600 text-white margin-55px-bottom w-90 md-w-100 md-no-text-shadow xs-margin-35px-bottom">Bienvenidos a FISPER, somos los expertos</h2>
                                     <div class="d-inline-block">
-                                        <a href="nosotros.html" target="_blank" class="btn btn-fancy btn-medium btn-gradient-brown margin-30px-right xs-margin-15px-bottom">Nuestra historia</a>
+                                        <a href="nosotros.php"  class="btn btn-fancy btn-medium btn-gradient-brown margin-30px-right xs-margin-15px-bottom">Nuestra historia</a>
                                         </div>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@
                                     <p class="alt-font text-extra-medium text-white opacity-7 font-weight-300 margin-40px-bottom xs-margin-20px-bottom">Asesoría por parte de nuestros expertos en servicios de contabilidad fiscal y jurídica con el objetivo de impulsar tu negocio.</p>
                                     <h2 class="alt-font text-shadow-double-large font-weight-600 text-white margin-55px-bottom w-90 md-w-100 md-no-text-shadow xs-margin-35px-bottom">Ayudamos a empresas a crecer e innovar</h2>
                                     <div class="d-inline-block">
-                                        <a href="Servicios.html" target="_blank" class="btn btn-fancy btn-medium btn-gradient-brown margin-30px-right xs-margin-15px-bottom">Nuestros servicios</a>
+                                        <a href="Servicios.php"  class="btn btn-fancy btn-medium btn-gradient-brown margin-30px-right xs-margin-15px-bottom">Nuestros servicios</a>
                                         </div>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@
                                     <p class="alt-font text-extra-medium text-white opacity-7 font-weight-300 margin-40px-bottom xs-margin-20px-bottom">Satisfacemos las necesidades de tu empresa acompañandote en constante capacitación y comprometidos con la calidad de nuestros servicios.</p>
                                     <h2 class="alt-font text-shadow-double-large font-weight-600 text-white margin-55px-bottom w-90 md-w-100 md-no-text-shadow xs-margin-35px-bottom">Clientes satisfechos, Asesores expertos</h2>
                                     <div class="d-inline-block">
-                                        <a href="contacto.html" target="_blank" class="btn btn-fancy btn-medium btn-gradient-brown margin-30px-right xs-margin-15px-bottom">Contactanos</a>
+                                        <a href="contacto.php"  class="btn btn-fancy btn-medium btn-gradient-brown margin-30px-right xs-margin-15px-bottom">Contactanos</a>
                                       </div>
                                 </div>
                             </div>
@@ -248,7 +248,7 @@
                         <p class="w-60 xl-w-100 text-white">Trascender en brindar servicio personalizado de contabilidad e impuestos de clientes, consultoría empresarial, capacitación, auditorías y asuntos legales. Dedicada a satisfacer las necesidades de nuestros clientes, ser un asesor estratégico implementando soluciones con oportunidad y dedicación al servicio y logro de las metas de nuestros clientes.
                             <br> <br>
                             Nuestra visión es ser una empresa líder en el ámbito contable, basándonos en la calidad y profesionalismo de nuestros servicios, brindando satisfacción a nuestros clientes. Respaldadas en la más alta confidencialidad y calidad de nuestros profesionales que dirigen, basadas en principios y valores a fin de contribuir al logro de los objetivos a corto, mediano y largo plazo y contribuir al desarrollo económico y humano de la comunidad.</p>
-                        <a href="our-services.html" class="btn btn-fancy btn-large btn-white margin-20px-top">View services</a>
+                        <a href="Servicios.php" class="btn btn-fancy btn-large btn-white margin-20px-top">View services</a>
                     </div>
                     <div class="col-12 col-lg-6 cover-background md-h-550px sm-h-400px xs-h-300px wow animate__fadeInLeft" data-wow-delay="0.2s" style="background-image: url('client/images/mision.jpg');"></div>
                     
@@ -465,9 +465,9 @@
                             <p id="direc"><strong>Address: Calle 38 #85, Fraccionamiento del Norte, 97120 Mérida, Yuc.</strong> </p>
                             <div class="social-icon-style-12">
                                 <ul class="extra-small-icon light">
-                                    <li><a class="facebook " href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a class="whatsapp" href="http://www.twitter.com" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                    <li><a class="facebook " href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a class="instagram" href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a class="whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
                                     
                                 </ul>
                             </div>

@@ -43,18 +43,18 @@ include_once ('includes/header_login.php');
             </h3>
 
             <div class="p-3">
-                <h4 class="text-muted font-18 m-b-5 text-center">Welcome Back !</h4>
-                <p class="text-muted text-center">Sign in to continue to Fisper.</p>
+                <h4 class="text-muted font-18 m-b-5 text-center">Bienvenido de nuevo !</h4>
+                <p class="text-muted text-center">Inicie sesión para continuar con Fisper.</p>
 
                 <form class="form-horizontal m-t-30" action="" method="POST">
 
                     <div class="form-group">
-                        <label for="username">Username</label>
+                        <label for="username">Usuario</label>
                         <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="userpassword">Password</label>
+                        <label for="userpassword">Contraseña</label>
                         <input type="password" class="form-control" id="userpassword" name="userpassword" placeholder="Enter password" required>
                     </div>
 
@@ -62,19 +62,15 @@ include_once ('includes/header_login.php');
                         <div class="col-6">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customControlInline">
-                                <label class="custom-control-label" for="customControlInline">Remember me</label>
+                                <label class="custom-control-label" for="customControlInline">Recuérdame</label>
                             </div>
                         </div>
                         <div class="col-6 text-right">
-                            <button class="btn btn-primary w-md waves-effect waves-light" type="submit" name="login">Log In</button>
+                            <button class="btn btn-primary w-md waves-effect waves-light" type="submit" name="login">iniciar sesión</button>
                         </div>
                     </div>
 
-                    <div class="form-group m-t-10 mb-0 row">
-                        <div class="col-12 m-t-20">
-                            <a href="pages-recoverpw.html" class="text-muted"><i class="mdi mdi-lock"></i> Forgot your password?</a>
-                        </div>
-                    </div>
+                    
                 </form>
             </div>
 

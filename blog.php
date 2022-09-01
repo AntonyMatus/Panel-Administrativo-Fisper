@@ -6,7 +6,7 @@ require 'Admin/config.php';
 $page = isset($_GET["page"]) ? intval($_GET["page"]) : 1;
 $category = (isset($_GET["category"]) && !empty($_GET["category"])) ? intval($_GET["category"]) : null;
 $search = (isset($_GET["search"]) && !empty($_GET["search"])) ? strval($_GET["search"]) : null;
-$itemsPerPage = 1;
+$itemsPerPage = 10;
 $limit = $itemsPerPage;
 $offset = ($page - 1) * $itemsPerPage;
 $pages = 0;
@@ -230,24 +230,24 @@ $categories = $querycategories->fetchAll(PDO::FETCH_OBJ);
                     <!-- start sidebar -->
                     <aside class="col-12 col-xl-3 offset-xl-1 col-lg-4 col-md-7 blog-sidebar lg-padding-4-rem-left md-padding-15px-left">
                         <div class="d-inline-block w-100 margin-5-rem-bottom">
-                            <span class="alt-font font-weight-500 text-large text-green2 d-block margin-25px-bottom">Search posts</span>
+                            <span class="alt-font font-weight-500 text-large text-green2 d-block margin-25px-bottom">Búsqueda de Artículos</span>
                             <form id="search-form" role="search" method="get" action="blog.php">
                                 <div class="position-relative">
                                     <input 
                                     type="text"
                                     name="search"
                                     class="search-input medium-input border-color-medium-gray border-radius-4px mb-0"
-                                    placeholder="Enter your keywords..."  
+                                    placeholder="Introduzca palabra clave"  
                                     value="<?php echo (isset($_GET["search"]) && !empty($_GET["search"])) ? strval($_GET["search"]) : '' ?>"   />
                                     <button type="submit" class="bg-transparent btn text-green2 position-absolute right-5px top-8px text-medium md-top-8px sm-top-10px search-button"><i class="feather icon-feather-search ms-0"></i></button>
                                 </div> 
                             </form>
                         </div>
                         <div class="border-all border-color-medium-gray border-radius-4px padding-40px-all text-center margin-5-rem-bottom xs-margin-35px-bottom">
-                            <a href="#"><img src="https://via.placeholder.com/125x125" alt="" class="rounded-circle margin-5px-bottom w-100px d-block mx-auto"/></a>
+                            <a href="#"><img src="client/images/logos/favicon.svg" alt="" class="rounded-circle margin-5px-bottom w-100px d-block mx-auto"/></a>
                             <a href="#" class="text-extra-dark-gray alt-font font-weight-500 margin-20px-top d-inline-block text-medium">Fisper</a>
-                            <span class="text-medium d-block line-height-18px margin-20px-bottom">Blog entry</span>
-                            <p>Lorem ipsum is simply dummy text of the printing and industry lorem ipsum has been standard.</p>
+                            <span class="text-medium d-block line-height-18px margin-20px-bottom">Fisper Blog</span>
+                            <p>Fisper es una consultoría de servicios empresariales con más de 20 años de experiencia en el sector.</p>
                             <div class="social-icon-style-02 text-center">
                                 <ul class="extra-small-icon2 ">
                                     <li class="mx-0"><a class="facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i><span></span></a></li>
@@ -305,9 +305,9 @@ $categories = $querycategories->fetchAll(PDO::FETCH_OBJ);
                         <p id="direc"><strong>Address: Calle 38 #85, Fraccionamiento del Norte, 97120 Mérida, Yuc.</strong> </p>
                         <div class="social-icon-style-12">
                             <ul class="extra-small-icon light">
-                                <li><a class="facebook " href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                <li><a class="whatsapp" href="http://www.twitter.com" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                <li><a class="facebook " href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a class="instagram" href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                <li><a class="whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
                                 
                             </ul>
                         </div>

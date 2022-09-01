@@ -61,27 +61,27 @@ if(! $blog){
                         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                             <ul class="navbar-nav alt-font">
                                 <li class="nav-item dropdown megamenu">
-                                    <a href="index.html" class="nav-link">Inicio</a>
+                                    <a href="index.php" class="nav-link">Inicio</a>
                                     
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="nosotros.html" class="nav-link">Nosotros</a>
+                                    <a href="nosotros.php" class="nav-link">Nosotros</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="Servicios.html" class="nav-link">Servicios</a>
+                                    <a href="Servicios.php" class="nav-link">Servicios</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="blog.html" class="nav-link">Blog</a>
+                                    <a href="blog.php" class="nav-link">Blog</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="videos.html" class="nav-link">Vídeos</a>
+                                    <a href="videos.php" class="nav-link">Vídeos</a>
                                    
                                 </li>
                                 <li class="nav-item dropdown megamenu">
-                                    <a href="contacto.html" class="nav-link">Contacto</a>
+                                    <a href="contacto.php" class="nav-link">Contacto</a>
                                     
                                 </li>
                                 

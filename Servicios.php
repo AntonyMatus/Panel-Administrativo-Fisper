@@ -220,9 +220,9 @@
                         <p id="direc"><strong>Address: Calle 38 #85, Fraccionamiento del Norte, 97120 Mérida, Yuc.</strong> </p>
                         <div class="social-icon-style-12">
                             <ul class="extra-small-icon light">
-                                <li><a class="facebook " href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                <li><a class="whatsapp" href="http://www.twitter.com" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                <li><a class="facebook " href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a class="instagram" href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                <li><a class="whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
                                 
                             </ul>
                         </div>

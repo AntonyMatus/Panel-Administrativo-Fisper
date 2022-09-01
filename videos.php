@@ -1,3 +1,54 @@
+<?php
+session_start();
+require 'Admin/config.php';
+
+$page = isset($_GET["page"]) ? intval($_GET["page"]) : 1;
+$search = (isset($_GET["search"]) && !empty($_GET["search"])) ? strval($_GET["search"]) : null;
+$itemsPerPage = 3;
+$limit = $itemsPerPage;
+$offset = ($page - 1) * $itemsPerPage;
+$pages = 0;
+$videos = [];
+
+
+if(!is_null($search)){
+
+    $qSearch = "%$search%";
+
+    $sqlForCount = "SELECT count(*) as count FROM videos WHERE name LIKE ?";
+    $queryCount = $pdo->prepare($sqlForCount);
+    $queryCount->execute([$qSearch]);
+    $count = $queryCount->fetchObject()->count;
+    $pages = ceil($count / $itemsPerPage);
+
+    $sqlForPosts = "SELECT P.id, P.name, P.description, P.img, P.link, P.date  FROM videos P WHERE P.name LIKE ?";
+    $queryPosts = $pdo->prepare($sqlForPosts);
+    $queryPosts->execute([$qSearch]);
+    $videos = $queryPosts->fetchAll(PDO::FETCH_OBJ);
+
+
+}
+
+if(is_null($search)){
+
+      // count
+      $sqlForCount = $pdo->query("SELECT count(*) as count FROM videos ");
+      $count = $sqlForCount->fetchObject()->count;
+      $pages = ceil($count / $itemsPerPage);
+
+      $sqlForPosts = "SELECT P.id, P.name, P.description, P.img, P.link, P.date  FROM videos P   LIMIT :lop OFFSET :osf";
+      $query = $pdo->prepare($sqlForPosts); 
+      $query->bindValue(':lop', (int) trim($limit), PDO::PARAM_INT);
+      $query->bindValue(':osf', (int) trim($offset), PDO::PARAM_INT);
+      $query->execute(); 
+      $videos = $query->fetchAll(PDO::FETCH_OBJ);
+
+}
+
+?>
+
+
+
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -78,8 +129,9 @@
             <div class="container">
                 <div class="row align-items-stretch justify-content-center extra-small-screen">
                     <div class="col-12 col-xl-6 col-lg-7 col-md-8 page-title-extra-small text-center d-flex justify-content-center flex-column">
-                        <h1 class="alt-font text-brown2 margin-15px-bottom d-inline-block">Blog grid layout</h1>
-                        <h2 class="text-green2 alt-font font-weight-500 letter-spacing-minus-1px line-height-50 sm-line-height-45 xs-line-height-30 no-margin-bottom">Attractive articles updated daily</h2>
+                        <h1 class="alt-font text-brown2 margin-15px-bottom d-inline-block">Nuestra selección de cursos </h1>
+                        <h2 class="text-green2 alt-font font-weight-500 letter-spacing-minus-1px line-height-50 sm-line-height-45 xs-line-height-30 no-margin-bottom">Capacitación continua FISPER</h2>
+                       
                     </div>
                 </div>
             </div>
@@ -91,10 +143,15 @@
                 <div class="row justify-content-right" >
                     <div class="col-12 col-xl-3 offset-xl-1 col-lg-4 col-md-7 blog-sidebar lg-padding-4-rem-left md-padding-15px-left">
                         <div class="d-inline-block w-100 margin-5-rem-bottom">
-                            <span class="alt-font font-weight-500 text-large text-extra-dark-gray d-block margin-25px-bottom">Search Vídeo</span>
-                            <form id="search-form" role="search" method="get" action="search-result.html">
+                            <span class="alt-font font-weight-500 text-large text-extra-dark-gray d-block margin-25px-bottom">Buscar curso.</span>
+                            <form id="search-form" role="search" method="get" action="videos.php">
                                 <div class="position-relative">
-                                    <input class="search-input medium-input border-color-medium-gray border-radius-4px mb-0" placeholder="Enter your keywords..." name="s" value="" type="text" autocomplete="off" />
+                                    <input  
+                                    type="text"
+                                    name="search"
+                                    class="search-input medium-input border-color-medium-gray border-radius-4px mb-0" 
+                                    placeholder="Introduzca palabra clave"  
+                                    value="<?php echo (isset($_GET["search"]) && !empty($_GET["search"])) ? strval($_GET["search"]) : '' ?>" />
                                     <button type="submit" class="bg-transparent btn text-fast-blue position-absolute right-5px top-8px text-medium md-top-8px sm-top-10px search-button"><i class="feather icon-feather-search ms-0"></i></button>
                                 </div> 
                             </form>
@@ -103,250 +160,56 @@
                 </div>
                 <div class="row">
                     <div class="col-12 blog-content">
-                        <ul class="blog-grid blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
+                        <ul class="blog-grid blog-wrapper grid grid-loading grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
                             <li class="grid-sizer"></li>
+                            <?php foreach($videos as $video): ?>
                             <!-- start blog item -->
                             <li class="grid-item wow animate__fadeIn">
                                 <div class="blog-post border-radius-5px bg-white box-shadow-medium">
                                     <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="blog-post-layout-01.html" title=""><img src="https://via.placeholder.com/800x560" alt=""></a>
-                                        <a href="blog-masonry.html" class="blog-category alt-font">Creative</a>
+                                        <a href="<?php echo $video->link ?>" title=""><img id="tamaño_img" src="Admin/assets/images/videos/<?php echo $video->img ?>" alt=""></a>
+                                        
                                     </div>
                                     <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">18 February 2020</a>
-                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">Creativity is nothing but a mind set free</a>
-                                        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>
-                                        <div class="d-flex align-items-center">
-                                            <img class="avtar-image" src="https://via.placeholder.com/125x125" alt=""/>
-                                            <span class="alt-font text-small me-auto">By <a href="blog-masonry.html">Torrie asai</a></span>
-                                           
-                                        </div>
+                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom"><?php echo date("d M Y", strtotime($video->date)) ?></a>
+                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block"><?php echo $video->name ?></a>
+                                        <p><?php echo $video->description ?></p>
+                                        
                                     </div>
                                 </div>
                             </li>
                             <!-- end blog item -->
+                            <?php endforeach ?>
                             <!-- start blog item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.2s">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium">
-                                    <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="blog-post-layout-02.html" title=""><img src="https://via.placeholder.com/800x560" alt=""></a>
-                                        <a href="blog-masonry.html" class="blog-category alt-font">Concept</a>
-                                    </div>
-                                    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">09 January 2020</a>
-                                        <a href="blog-post-layout-02.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">Simplicity is the ultimate sophistication</a>
-                                        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>
-                                        <div class="d-flex align-items-center">
-                                            <img class="avtar-image" src="https://via.placeholder.com/125x125" alt=""/>
-                                            <span class="alt-font text-small me-auto">By <a href="blog-masonry.html" class="text-sky-blue-hover">Walton smith</a></span>
-                                            </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end blog item -->
-                            <!-- start blog item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.4s">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium">
-                                    <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="blog-post-layout-03.html" title=""><img src="https://via.placeholder.com/800x560" alt=""></a>
-                                        <a href="blog-masonry.html" class="blog-category alt-font">Nature</a>
-                                    </div>
-                                    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">12 December 2020</a>
-                                        <a href="blog-post-layout-03.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">People ignore designs that ignore people</a>
-                                        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>
-                                        <div class="d-flex align-items-center">
-                                            <img class="avtar-image" src="https://via.placeholder.com/125x125" alt=""/>
-                                            <span class="alt-font text-small me-auto">By <a href="blog-masonry.html" class="text-sky-blue-hover">Bill gardner</a></span>
-                                            </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end blog item -->
-                            <!-- start blog item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.6s">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium">
-                                    <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="blog-post-layout-04.html" title=""><img src="https://via.placeholder.com/800x560" alt=""></a>
-                                        <a href="blog-masonry.html" class="blog-category alt-font">Modern</a>
-                                    </div>
-                                    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">23 November 2020</a>
-                                        <a href="blog-post-layout-04.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">Look at usual things with unusual eyes</a>
-                                        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>
-                                        <div class="d-flex align-items-center">
-                                            <img class="avtar-image" src="https://via.placeholder.com/125x125" alt=""/>
-                                            <span class="alt-font text-small me-auto">By <a href="blog-masonry.html" class="text-sky-blue-hover">Vico magistre</a></span>
-                                            </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end blog item -->
-                            <!-- start blog item -->
-                            <li class="grid-item wow animate__fadeIn">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium">
-                                    <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="blog-post-layout-05.html" title=""><img src="https://via.placeholder.com/800x560" alt=""></a>
-                                        <a href="blog-masonry.html" class="blog-category alt-font">Fashion</a>
-                                    </div>
-                                    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">12 January 2020</a>
-                                        <a href="blog-post-layout-05.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">Fashion is not something exists in dresses</a>
-                                        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>
-                                        <div class="d-flex align-items-center">
-                                            <img class="avtar-image" src="https://via.placeholder.com/125x125" alt=""/>
-                                            <span class="alt-font text-small me-auto">By <a href="blog-masonry.html" class="text-sky-blue-hover">Coco chanel</a></span>
-                                            </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end blog item -->
-                            <!-- start blog item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.2s">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium">
-                                    <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="blog-post-layout-01.html" title=""><img src="https://via.placeholder.com/800x560" alt=""></a>
-                                        <a href="blog-masonry.html" class="blog-category alt-font">Lifestyle</a>
-                                    </div>
-                                    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">05 November 2020</a>
-                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">Everything designed things are designed well</a>
-                                        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>
-                                        <div class="d-flex align-items-center">
-                                            <img class="avtar-image" src="https://via.placeholder.com/125x125" alt=""/>
-                                            <span class="alt-font text-small me-auto">By <a href="blog-masonry.html" class="text-sky-blue-hover">Mark lamb</a></span>
-                                            </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end blog item -->
-                            <!-- start blog item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.4s">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium">
-                                    <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="blog-post-layout-02.html" title=""><img src="https://via.placeholder.com/800x560" alt=""></a>
-                                        <a href="blog-masonry.html" class="blog-category alt-font">Furniture</a>
-                                    </div>
-                                    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">19 October 2020</a>
-                                        <a href="blog-post-layout-02.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">Houseful of new furniture doesn't mean lot</a>
-                                        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>
-                                        <div class="d-flex align-items-center">
-                                            <img class="avtar-image" src="https://via.placeholder.com/125x125" alt=""/>
-                                            <span class="alt-font text-small me-auto">By <a href="blog-masonry.html" class="text-sky-blue-hover">Lindsey bucki</a></span>
-                                            </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end blog item -->
-                            <!-- start blog item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.6s">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium">
-                                    <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="blog-post-layout-03.html" title=""><img src="https://via.placeholder.com/800x560" alt=""></a>
-                                        <a href="blog-masonry.html" class="blog-category alt-font">Branding</a>
-                                    </div>
-                                    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">09 September 2020</a>
-                                        <a href="blog-post-layout-03.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">The best comfort food will always be greens</a>
-                                        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>
-                                        <div class="d-flex align-items-center">
-                                            <img class="avtar-image" src="https://via.placeholder.com/125x125" alt=""/>
-                                            <span class="alt-font text-small me-auto">By <a href="blog-masonry.html" class="text-sky-blue-hover">Maya angelou</a></span>
-                                            </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end blog item -->
-                            <!-- start blog item -->
-                            <li class="grid-item wow animate__fadeIn">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium">
-                                    <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="blog-post-layout-04.html" title=""><img src="https://via.placeholder.com/800x560" alt=""></a>
-                                        <a href="blog-masonry.html" class="blog-category alt-font">Travelling</a>
-                                    </div>
-                                    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">18 August 2020</a>
-                                        <a href="blog-post-layout-04.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">I love traveling all over the world but it's true</a>
-                                        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>
-                                        <div class="d-flex align-items-center">
-                                            <img class="avtar-image" src="https://via.placeholder.com/125x125" alt=""/>
-                                            <span class="alt-font text-small me-auto">By <a href="blog-masonry.html" class="text-sky-blue-hover">Walton smith</a></span>
-                                            </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end blog item -->
-                            <!-- start blog item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.2s">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium">
-                                    <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="blog-post-layout-05.html" title=""><img src="https://via.placeholder.com/800x560" alt=""></a>
-                                        <a href="blog-masonry.html" class="blog-category alt-font">Creative</a>
-                                    </div>
-                                    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">26 June 2020</a>
-                                        <a href="blog-post-layout-05.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">A true photograph not be explained, words</a>
-                                        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>
-                                        <div class="d-flex align-items-center">
-                                            <img class="avtar-image" src="https://via.placeholder.com/125x125" alt=""/>
-                                            <span class="alt-font text-small me-auto">By <a href="blog-masonry.html" class="text-sky-blue-hover">Bill gardner</a></span>
-                                            </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end blog item -->
-                            <!-- start blog item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.4s">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium">
-                                    <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="blog-post-layout-01.html" title=""><img src="https://via.placeholder.com/800x560" alt=""></a>
-                                        <a href="blog-masonry.html" class="blog-category alt-font">Business</a>
-                                    </div>
-                                    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">20 April 2020</a>
-                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">Consider every mistake do make as asset</a>
-                                        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>
-                                        <div class="d-flex align-items-center">
-                                            <img class="avtar-image" src="https://via.placeholder.com/125x125" alt=""/>
-                                            <span class="alt-font text-small me-auto">By <a href="blog-masonry.html" class="text-sky-blue-hover">Jeremy dupont</a></span>
-                                            </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end blog item -->
-                            <!-- start blog item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.6s">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium">
-                                    <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="blog-post-layout-02.html" title=""><img src="https://via.placeholder.com/800x560" alt=""></a>
-                                        <a href="blog-masonry.html" class="blog-category alt-font">Events</a>
-                                    </div>
-                                    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">14 March 2020</a>
-                                        <a href="blog-post-layout-02.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">Winners make a habit of facturing positive </a>
-                                        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>
-                                        <div class="d-flex align-items-center">
-                                            <img class="avtar-image" src="https://via.placeholder.com/125x125" alt=""/>
-                                            <span class="alt-font text-small me-auto">By <a href="blog-masonry.html" class="text-sky-blue-hover">Coco chanel</a></span>
-                                            </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end blog item -->
+                            
                         </ul>
+                        <?php if($pages > 1) { ?>
                         <!-- start pagination -->
-                        <div class="col-12 d-flex justify-content-center margin-7-half-rem-top md-margin-5-rem-top wow animate__fadeIn">
+                        <div class="col-12 d-flex justify-content-center margin-7-half-rem-top lg-margin-5-rem-top xs-margin-4-rem-top wow animate__fadeIn">
+                            <?php $queryParams = '&search=' . $search; ?>
                             <ul class="pagination pagination-style-01 text-small font-weight-500 align-items-center">
-                                <li class="page-item"><a class="page-link" href="#"><i class="feather icon-feather-arrow-left icon-extra-small d-xs-none"></i></a></li>
-                                <li class="page-item"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                <li class="page-item"><a class="page-link" href="#">04</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><i class="feather icon-feather-arrow-right icon-extra-small  d-xs-none"></i></a></li>
-                            </ul>
+                                <li class="page-item">
+                                    <a class="page-link"
+                                    <?php if ($page > 1) { ?>
+                                     href="videos.php?page=<?php echo $page - 1 ?> <?php echo $queryParams ?>" <?php }?>>
+                                     <i class="feather icon-feather-arrow-left icon-extra-small d-xs-none"></i>
+                                    </a>
+                                </li>
+                                <?php for($i = 1; $i <= $pages; $i++) { ?>
+                                <li class="page-item <?php if($i == $page) {echo 'active';} ?>"> 
+                                    <a class="page-link" href="videos.php?page=<?php echo $i ?><?php echo $queryParams ?>"><?php echo $i ?></a>
+                                </li>
+                                <?php } ?>
+                                <li class="page-item">
+                                    <a class="page-link"
+                                    <?php if($page < $pages) {?> href="videos.php?page=<?php echo $page + 1 ?><?php echo $queryParams ?>" <?php } ?>>
+                                     <i class="feather icon-feather-arrow-right icon-extra-small  d-xs-none"></i>
+                                    </a>
+                                </li>
+                             </ul>
                         </div>
                         <!-- end pagination -->
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -380,9 +243,9 @@
                             <p id="direc"><strong>Address: Calle 38 #85, Fraccionamiento del Norte, 97120 Mérida, Yuc.</strong> </p>
                             <div class="social-icon-style-12">
                                 <ul class="extra-small-icon light">
-                                    <li><a class="facebook " href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a class="whatsapp" href="http://www.twitter.com" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                    <li><a class="facebook " href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a class="instagram" href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a class="whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
                                     
                                 </ul>
                             </div>
