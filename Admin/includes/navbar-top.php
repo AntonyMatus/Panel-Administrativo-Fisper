@@ -9,7 +9,7 @@
             <img src="assets/images/logo-white.svg" alt="" width="120" height="30">
         </span>
         <i>
-            <img src="assets/images/logo-sm.png" alt="" height="22">
+            <img src="assets/images/favicon-white.svg" alt="" height="22">
         </i>
     </a>
 </div>

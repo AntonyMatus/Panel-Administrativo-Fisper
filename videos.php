@@ -243,9 +243,9 @@ if(is_null($search)){
                             <p id="direc"><strong>Address: Calle 38 #85, Fraccionamiento del Norte, 97120 Mérida, Yuc.</strong> </p>
                             <div class="social-icon-style-12">
                                 <ul class="extra-small-icon light">
-                                    <li><a class="facebook " href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a class="instagram" href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a class="whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                    <li><a class="facebook " href="https://www.facebook.com/Fisperasesoriaintegral/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a class="instagram" href="https://instagram.com/fispermx?igshid=ODBkMDk1MTU=" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a class="whatsapp" href="https://api.whatsapp.com/send?phone=529993474635&app=facebook&entry_point=page_cta" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
                                     
                                 </ul>
                             </div>

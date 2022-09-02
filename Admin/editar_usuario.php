@@ -1,6 +1,14 @@
 <?php 
 session_start();
 
+if(!isset($_SESSION['user_id'])){
+    header('location:login.php');
+    } else {
+    
+    }
+
+?>
+<?
 $is_admin = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
 if(!$is_admin){
     $_SESSION['message'] = "Usted no tiene Permisos en esta pagina!";

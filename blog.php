@@ -108,9 +108,9 @@ $categories = $querycategories->fetchAll(PDO::FETCH_OBJ);
                 <div class="container-fluid nav-header-container">
                     <div class="col-6 col-lg-2 me-auto ps-lg-0">
                         <a class="navbar-brand" href="index.php">
-                            <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="default-logo" alt="" >
-                            <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="alt-logo" alt="">
-                            <img src="client/images/logos/logo-white.svg" data-at2x="images/logos/logo-white.svg" class="mobile-logo" alt="">
+                            <img src="client/images/logos/logo-white.svg" data-at2x="client/images/logos/logo-white.svg" class="default-logo" alt="" >
+                            <img src="client/images/logos/logo-white.svg" data-at2x="client/images/logos/logo-white.svg" class="alt-logo" alt="">
+                            <img src="client/images/logos/logo-white.svg" data-at2x="client/images/logos/logo-white.svg" class="mobile-logo" alt="">
                         </a>
                     </div>
                     <div class="col-auto menu-order px-lg-0">

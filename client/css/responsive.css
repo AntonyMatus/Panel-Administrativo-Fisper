@@ -4754,6 +4754,8 @@
     .home-architecture .tparrows.tp-rightarrow { transform: matrix(1, 0, 0, 1, -67, -301) !important; }
 }
 
+
+
 @media (max-width: 767px) {
     /* reset */
     html { font-size: 11px }
@@ -4765,6 +4767,8 @@
 
     /* typography */
     p { margin: 0 0 15px }
+
+    
 
     /* text size */
     .title-extra-small { font-size: 20px; line-height: 30px; }
@@ -5008,6 +5012,8 @@
     .sm-margin-10-rem-bottom { margin-bottom: 10rem; }
     .sm-margin-10-half-rem-bottom { margin-bottom: 10.5rem; }
 
+    h2{font-size: 2.8rem;}
+    .h-3rem{font-size: 2rem;}
     /* margin right */
     .sm-margin-one-right { margin-right:1%; }
     .sm-margin-two-right { margin-right:2%; }

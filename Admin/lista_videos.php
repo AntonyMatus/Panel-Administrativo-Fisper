@@ -1,5 +1,16 @@
+
 <?php 
 session_start();
+
+if(!isset($_SESSION['user_id'])){
+    header('location:login.php');
+    } else {
+    
+    }
+?>
+
+<?php 
+
 include('config.php');
 
 $sql_leer = 'SELECT * FROM videos';

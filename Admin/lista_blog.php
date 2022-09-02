@@ -1,6 +1,14 @@
 
 <?php 
 session_start();
+
+if(!isset($_SESSION['user_id'])){
+header('location:login.php');
+} else {
+
+}
+?>
+<?php
 include('config.php');
 
 $query = "SELECT P.id, P.name, P.date, C.name AS category FROM blog P JOIN category C ON P.category_id = C.id";
@@ -8,8 +16,6 @@ $blog = $pdo->prepare($query);
 $blog->execute();
 
 $result = $blog->fetchAll();
-
-
 
 
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +34,7 @@
 
         <?php include('includes/navbar-top.php'); ?>
 
-        <?php include('includes/sidebar.php'); ?>
+        <?php require 'includes/sidebar.php'; ?>
 
         <div class="content-page">
                 <!-- Start content -->
