@@ -250,9 +250,9 @@ $categories = $querycategories->fetchAll(PDO::FETCH_OBJ);
                             <p>Fisper es una consultoría de servicios empresariales con más de 20 años de experiencia en el sector.</p>
                             <div class="social-icon-style-02 text-center">
                                 <ul class="extra-small-icon2 ">
-                                    <li class="mx-0"><a class="facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i><span></span></a></li>
-                                    <li class="mx-0"><a class="instagram" href="#" target="_blank"><i class="fab fa-instagram"></i><span></span></a></li>
-                                    <li class="mx-0"><a class="whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i><span></span></a></li>
+                                    <li class="mx-0"><a class="facebook" href="https://www.facebook.com/Fisperasesoriaintegral/" target="_blank"><i class="fab fa-facebook-f"></i><span></span></a></li>
+                                    <li class="mx-0"><a class="instagram" href="https://instagram.com/fispermx?igshid=ODBkMDk1MTU=" target="_blank"><i class="fab fa-instagram"></i><span></span></a></li>
+                                    <li class="mx-0"><a class="whatsapp" href="https://api.whatsapp.com/send?phone=529993474635&app=facebook&entry_point=page_cta" target="_blank"><i class="fab fa-whatsapp"></i><span></span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -277,58 +277,58 @@ $categories = $querycategories->fetchAll(PDO::FETCH_OBJ);
             </div>
         </section>
         <!-- end section -->   
-      <!-- start footer -->
-      <footer class="footer-consulting footer-dark bg-green2">
-        <div class="footer-top padding-six-tb lg-padding-eight-tb md-padding-50px-tb">
-            <div class="container">
-                <div class="row">
-                    <!-- start footer column -->
-                    <div class="col-12 col-lg-5 col-sm-6 order-sm-1 order-lg-0 last-paragraph-no-margin md-margin-40px-bottom xs-margin-25px-bottom">
-                        <img src="client/images/logos/logo-white.svg" alt="logo" width="219px" class="margin-30px-bottom"> 
-                        <p class="alt-font text-white">FISPER es una consultoría de servicios empresariales en la que se abarca un gran espectro de servicios, manejando desde el área administrativa, el área contable, el área fiscal,  el área legal, tramitología y todo lo que incluya trámite ante instituciones gubernamentales.</p>
-                    </div>
-                    <!-- end footer column -->
-                    <!-- start footer column -->
-                    
-                    <!-- end footer column -->
-                    <!-- start footer column -->
-                    <div class="col-12 col-lg-2 col-sm-5 offset-sm-1 offset-lg-0 order-sm-4 order-lg-0 xs-margin-25px-bottom">
-                        
-                    </div>
-                    <!-- end footer column -->                    
-                    <!-- start footer column -->
-                    <div class="col-12 col-lg-4 offset-xl-1 col-lg-4 col-sm-6 order-sm-3 order-lg-0">                       
-                        <span id="info" class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">Informacion de contacto</span>
-                        
-                        <p id="tel"><strong>Phone: 999 4903 992</strong> </p>
-                        <p id="email"><strong>Email: auxadministrativo@fisper.com.mx</strong> </p>
-                        <p id="direc"><strong>Address: Calle 38 #85, Fraccionamiento del Norte, 97120 Mérida, Yuc.</strong> </p>
-                        <div class="social-icon-style-12">
-                            <ul class="extra-small-icon light">
-                                <li><a class="facebook " href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a class="instagram" href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                <li><a class="whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-                                
-                            </ul>
+       <!-- start footer -->
+       <footer class="footer-consulting footer-dark bg-green2">
+            <div class="footer-top padding-six-tb lg-padding-eight-tb md-padding-50px-tb">
+                <div class="container">
+                    <div class="row">
+                        <!-- start footer column -->
+                        <div class="col-12 col-lg-5 col-sm-6 order-sm-1 order-lg-0 last-paragraph-no-margin md-margin-40px-bottom xs-margin-25px-bottom">
+                            <img src="client/images/logos/logo-white.svg" alt="logo" width="219px" class="margin-30px-bottom"> 
+                            <p class="alt-font text-white">FISPER es una consultoría de servicios empresariales en la que se abarca un gran espectro de servicios, manejando desde el área administrativa, el área contable, el área fiscal,  el área legal, tramitología y todo lo que incluya trámite ante instituciones gubernamentales.</p>
                         </div>
+                        <!-- end footer column -->
+                        <!-- start footer column -->
+                        
+                        <!-- end footer column -->
+                        <!-- start footer column -->
+                        <div class="col-12 col-lg-2 col-sm-5 offset-sm-1 offset-lg-0 order-sm-4 order-lg-0 xs-margin-25px-bottom">
+                            
+                        </div>
+                        <!-- end footer column -->                    
+                        <!-- start footer column -->
+                        <div class="col-12 col-lg-4 offset-xl-1 col-lg-4 col-sm-6 order-sm-3 order-lg-0">                       
+                            <span id="info" class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">Informacion de contacto</span>
+                            
+                            <p id="tel"><strong>Phone: 999 4903 992</strong> </p>
+                            <p id="email"><strong>Email: auxadministrativo@fisper.com.mx</strong> </p>
+                            <p id="direc"><strong>Address: Calle 38 #85, Fraccionamiento del Norte, 97120 Mérida, Yuc.</strong> </p>
+                            <div class="social-icon-style-12">
+                                <ul class="extra-small-icon light">
+                                    <li><a class="facebook " href="https://www.facebook.com/Fisperasesoriaintegral/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a class="instagram" href="https://instagram.com/fispermx?igshid=ODBkMDk1MTU=" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a class="whatsapp" href="https://api.whatsapp.com/send?phone=529993474635&app=facebook&entry_point=page_cta" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end footer column -->
                     </div>
-                    <!-- end footer column -->
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom padding-35px-tb border-top border-width-1px border-color-white-transparent">
-            <div class="container"> 
-                <div class="row align-items-center">
-                    
-                    <div class="col-12 col-md-12 text-center last-paragraph-no-margin sm-margin-20px-bottom">
-                        <p>Fisper 2022 &copy; Desarrollado por  <a href="https://www.buho-solutions.com" target="_blank" class="text-decoration-line-bottom text-tussock text-white-hover font-weight-500">Buho Solutions</a></p>
+            <div class="footer-bottom padding-35px-tb border-top border-width-1px border-color-white-transparent">
+                <div class="container"> 
+                    <div class="row align-items-center">
+                        
+                        <div class="col-12 col-md-12 text-center last-paragraph-no-margin sm-margin-20px-bottom">
+                            <p>Fisper 2022 &copy; Desarrollado por  <a href="https://www.buho-solutions.com" target="_blank" class="text-decoration-line-bottom text-tussock text-white-hover font-weight-500">Buho Solutions</a></p>
+                        </div>
+                        
                     </div>
-                    
                 </div>
             </div>
-        </div>
-    </footer>
-    <!-- end footer -->
+        </footer>
+        <!-- end footer -->
         <!-- start scroll to top -->
         <a class="scroll-top-arrow" href="javascript:void(0);"><i class="feather icon-feather-arrow-up"></i></a>
         <!-- end scroll to top -->

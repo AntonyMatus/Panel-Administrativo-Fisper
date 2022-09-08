@@ -28,7 +28,7 @@
 
             if( $checkemail_run == false){
                 //Already Email Exists
-                $_SESSION['message'] = "Already Email Exists";
+                $_SESSION['message'] = "Ya existe un correo con ese mismo email";
                 header("location: crear_usuario.php");
                 exit(0);
             } else 
@@ -39,12 +39,12 @@
 
 
                 if($user_query_run){
-                    $_SESSION['message'] = "Registered Successfully ";
+                    $_SESSION['message'] = "Usuario Creado satisfactoriamente! ";
                     header("location: lista_usuarios.php");
                     exit(0);
                 } else 
                 {
-                    $_SESSION['message'] = "Something When Wrong";
+                    $_SESSION['message'] = "Algo salio mal!";
                     header("location: crear_usuario.php");
                     exit(0);
                 }
@@ -52,7 +52,7 @@
 
 
         } else {
-            $_SESSION['message'] = "Password and Confirm Password does not Match";
+            $_SESSION['message'] = "Contraseña y confirmar contraseña no son iguales ";
             header("location: crear_usuario.php");
             exit(0);
         }

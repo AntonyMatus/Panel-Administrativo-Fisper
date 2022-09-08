@@ -59,11 +59,11 @@ if($result === TRUE) {
 
     }
 
-    $_SESSION['message'] = "Los cambios han sido guardados con Exito!";
+    $_SESSION['message'] = "Los cambios han sido actualizados con Exito!";
     header("location: lista_blog.php");
     exit(0);
 } else {
-    $_SESSION['message'] = "Los cambios No han sido guardados con exito!";
+    $_SESSION['message'] = "Los cambios No han sido actualizados con exito!";
     header("location:lista_blog.php");
     exit(0);
 }
