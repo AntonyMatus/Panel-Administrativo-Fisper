@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="Búho Solutions">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
-        <meta name="description" content="FISPER es una consultoría de servicios empresariales en la que se abarca un gran espectro de servicios, manejando desde el área administrativa, el área contable, el área fiscal,  el área legal, tramitología y todo lo que incluya trámite ante instituciones gubernamentales.">
+        <meta name="description" content="FISPER es una consultoría de servicios empresariales en la que se abarca un gran espectro de servicios, manejando desde el área administrativa, el área contable, el área fiscal, el área legal, tramitología y todo lo que incluya trámite ante instituciones gubernamentales.">
         <!-- favicon icon -->
         <link rel="shortcut icon" href="client/images/logos/favicon-white.svg">
         <link rel="apple-touch-icon" href="client/images/logos/favicon-white.svg">
@@ -183,7 +183,7 @@
                     <div class="row align-items-center">
                         
                         <div class="col-12 col-md-12 text-center last-paragraph-no-margin sm-margin-20px-bottom">
-                            <p>Fisper 2022 &copy; Desarrollado por  <a href="https://www.buho-solutions.com" target="_blank" class="text-decoration-line-bottom text-tussock text-white-hover font-weight-500">Buho Solutions</a></p>
+                            <p><a class="padding-two-right" href="admin/login.php"><i class="fa fa-user" aria-hidden="true"></i></a>Fisper 2022 &copy; Desarrollado por  <a href="https://www.buho-solutions.com" target="_blank" class="text-decoration-line-bottom text-tussock text-white-hover font-weight-500">Buho Solutions</a></p>
                         </div>
                         
                     </div>

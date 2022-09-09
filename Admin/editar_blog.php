@@ -1,20 +1,10 @@
+
 <?php
 session_start();
-
-if(!isset($_SESSION['user_id'])){
-    header('location:login.php');
-    } else {
-    
-    }
-
-?>
-<?
+include('config.php');
 if(!isset($_GET['id'])) exit();
 
 $id = $_GET['id'];
-
-include('config.php');
-
 $sql = $pdo->prepare("SELECT * FROM blog WHERE id= ?;");
 $sql->execute([$id]);
 $blog = $sql->fetch(PDO::FETCH_OBJ);
@@ -22,7 +12,6 @@ if($blog === FALSE){
     echo "No existe alguna persna con ese ID";
     exit(0);
 }
-
 
 $query = "SELECT * FROM category";
 $sql_2 = $pdo->prepare($query);
@@ -32,11 +21,9 @@ $result = $sql_2->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 
-<?php 
-include('includes/header.php');
-?>
 
 
+<?php require 'includes/header.php' ?>
 
 <div class="row">
         <div class="col-sm-12">
@@ -97,14 +84,7 @@ include('includes/header.php');
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Imagen</label>
-                            <div>
-                            <input type="file" class="filestyle" name="image" data-buttonname="btn-secondary">
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Categoria</label>
@@ -116,6 +96,23 @@ include('includes/header.php');
                                     <?php endforeach ?>
                                 </select>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Imagen</label>
+                            <div>
+                            <input type="file" class="filestyle" name="image" data-buttonname="btn-secondary">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Cuerpo</label>
+                            <div>
+                                <textarea name="body" id="body" required ><?php echo $blog->body ?></textarea>
+                            </div>
+                        
                         </div>
                     </div>
                     

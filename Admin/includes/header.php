@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="author" content="Búho Solutions" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <meta  name="description" content="FISPER es una consultoría de servicios empresariales en la que se abarca un gran espectro de servicios, manejando desde el área administrativa, el área contable, el área fiscal,  el área legal, tramitología y todo lo que incluya trámite ante instituciones gubernamentales." />
+        <meta name="description" content="FISPER es una consultoría de servicios empresariales en la que se abarca un gran espectro de servicios, manejando desde el área administrativa, el área contable, el área fiscal, el área legal, tramitología y todo lo que incluya trámite ante instituciones gubernamentales.">
         <link rel="shortcut icon" href="assets/images/favicon-white.svg">
         <link rel="stylesheet" href="plugins/morris/morris.css">
 
@@ -25,6 +25,11 @@
         <link href="assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
         <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
         <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+        <style>
+            .tox-notifications-container {
+                display: none !important;
+            }
+        </style>
     </head>
 
     <body>

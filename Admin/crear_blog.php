@@ -81,14 +81,6 @@ $result = $sql->fetchAll(PDO::FETCH_OBJ);
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Imagen</label>
-                            <div>
-                            <input type="file" class="filestyle" name="image" data-buttonname="btn-secondary">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
                             <label>Categoria</label>
                             <div>
                                 <select name="category_id" class="form-control">
@@ -98,6 +90,25 @@ $result = $sql->fetchAll(PDO::FETCH_OBJ);
                                     <?php endforeach ?>
                                 </select>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Imagen</label>
+                            <div>
+                            <input type="file" class="filestyle" name="image" data-buttonname="btn-secondary">
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Cuerpo</label>
+                            <div>
+                                <textarea name="body" id="body" required ></textarea>
+                            </div>
+                        
                         </div>
                     </div>
                     

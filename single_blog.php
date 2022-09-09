@@ -26,7 +26,28 @@ if(! $blog){
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="Búho Solutions">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
-        <meta name="description" content="FISPER es una consultoría de servicios empresariales en la que se abarca un gran espectro de servicios, manejando desde el área administrativa, el área contable, el área fiscal,  el área legal, tramitología y todo lo que incluya trámite ante instituciones gubernamentales.">
+        <meta name="description" content="FISPER es una consultoría de servicios empresariales en la que se abarca un gran espectro de servicios, manejando desde el área administrativa, el área contable, el área fiscal, el área legal, tramitología y todo lo que incluya trámite ante instituciones gubernamentales.">
+        <meta name="image" content="http://fisper.com.mx/Admin/assets/images/blogs/<?php echo $blog->img ?>">
+
+        <!-- Google / Search Engine Tags -->
+        <meta itemprop="name" content="Test website">
+        <meta itemprop="description" content="<?php echo $blog->description ?>">
+        <meta itemprop="image" content="http://fisper.com.mx/Admin/assets/images/blogs/<?php echo $blog->img ?>">
+        
+        <!-- Facebook Meta Tags -->
+        
+        <meta property="og:type" content="website">
+        <meta property="og:description" content="<?php echo $blog->description ?>">
+        <meta property="og:image" content="http://fisper.com.mx/Admin/assets/images/blogs/<?php echo $blog->img ?>">
+        <meta property="og:image:alt" content="http://fisper.com.mx/Admin/assets/images/blogs/<?php echo $blog->img ?>">
+        <meta property="og:url" content="https://fisper.com.mx/single_blog.php?id=<?php echo $id ?>">
+
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:description" content="<?php echo $blog->description ?>">
+        <meta name="twitter:image" content="http://fisper.com.mx/Admin/assets/images/blogs/<?php echo $blog->img ?>">
+
+        
         <!-- favicon icon -->
         <link rel="shortcut icon" href="client/images/logos/favicon-white.svg">
         <link rel="apple-touch-icon" href="client/images/logos/favicon-white.svg">
@@ -111,8 +132,7 @@ if(! $blog){
                                 src="Admin/assets/images/blogs/<?php echo $blog->img ?>" 
                                 alt="Imagen de portada"
                                 class="w-100 border-radius-6px margin-4-half-rem-bottom">
-                                <p><?php echo $blog->description ?></p>
-                                
+                                <?php echo $blog->body ?>                                
                                </div>
                                                    
                         </div>
@@ -168,7 +188,7 @@ if(! $blog){
                     <div class="row align-items-center">
                         
                         <div class="col-12 col-md-12 text-center last-paragraph-no-margin sm-margin-20px-bottom">
-                            <p>Fisper 2022 &copy; Desarrollado por  <a href="https://www.buho-solutions.com" target="_blank" class="text-decoration-line-bottom text-tussock text-white-hover font-weight-500">Buho Solutions</a></p>
+                            <p><a class="padding-two-right" href="admin/login.php"><i class="fa fa-user" aria-hidden="true"></i></a> Fisper 2022 &copy; Desarrollado por  <a href="https://www.buho-solutions.com" target="_blank" class="text-decoration-line-bottom text-tussock text-white-hover font-weight-500">Buho Solutions</a></p>
                         </div>
                         
                     </div>

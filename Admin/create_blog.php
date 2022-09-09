@@ -13,20 +13,22 @@ if(isset($_POST['register-btn'])){
     if($storeImage){
         $name = $_POST['name'];
         $description = $_POST['description'];
+        $body = strval($_POST['body']);
         $date = $_POST['date'];
         $status = $_POST['status'];
         $category_id = $_POST['category_id'];
 
         
-        echo $name . "_" . $description. "_". $date . "_". $status. "_" . $category_id . "_ " . $filename;
+        
 
-        $blog_query = "INSERT INTO blog (category_id, name, description, date, status, img) VALUE (:category_id, :name, :description, :date, :status, :img);";
+        $blog_query = "INSERT INTO blog (category_id, name, description, body, date, status, img) VALUE (:category_id, :name, :description, :body, :date, :status, :img);";
         $blog_query_run = $pdo->prepare($blog_query);
 
         
         $blog_query_run->bindParam(':category_id', $category_id);
         $blog_query_run->bindParam(':name', $name);
         $blog_query_run->bindParam(':description', $description);
+        $blog_query_run->bindParam(':body', $body);
         $blog_query_run->bindParam(':date', $date);
         $blog_query_run->bindParam(':status', $status);
         $blog_query_run->bindParam(':img', $filename);

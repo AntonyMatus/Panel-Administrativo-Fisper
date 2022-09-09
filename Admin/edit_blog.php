@@ -6,6 +6,7 @@ include('config.php');
 if(
 	!isset($_POST["name"]) || 
 	!isset($_POST["description"]) || 
+    !isset($_POST["body"]) || 
 	!isset($_POST["date"]) || 
 	!isset($_POST["status"])
 ) exit();
@@ -13,14 +14,23 @@ if(
 $id = $_POST['id'];
 $name = $_POST['name'];
 $description = $_POST['description'];
+$body = strval($_POST['body']);
 $date = $_POST['date'];
 $status = $_POST['status'];
 $category_id = $_POST['category_id'];
 
 
+$sql = "UPDATE blog SET category_id = :category_id, name = :name, description = :description, body = :body, date = :date, status = :status WHERE id = :id;";
+$edit_blog = $pdo->prepare($sql);
 
-$edit_blog = $pdo->prepare("UPDATE blog SET category_id = ?, name = ?, description = ?, date = ?, status = ? WHERE id = ?;");
-$result = $edit_blog->execute([$category_id, $name, $description, $date, $status, $id]);
+$edit_blog->bindParam(':category_id', $category_id, PDO::PARAM_INT);
+$edit_blog->bindParam(':name', $name, PDO::PARAM_STR);
+$edit_blog->bindParam(':description', $description, PDO::PARAM_STR);
+$edit_blog->bindParam(':body', $body, PDO::PARAM_STR);
+$edit_blog->bindParam(':date', $date, PDO::PARAM_STR);
+$edit_blog->bindParam(':status', $status, PDO::PARAM_INT);
+$edit_blog->bindParam(':id', $id, PDO::PARAM_INT);
+$result = $edit_blog->execute();
 
 if($result === TRUE) {
 

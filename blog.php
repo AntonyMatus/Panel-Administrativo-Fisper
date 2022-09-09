@@ -41,7 +41,7 @@ if (is_null($category) && is_null($search)) {
   
         
            // posts
-            $sqlForPosts = "SELECT P.id, P.name, P.description, P.img, C.name AS category FROM blog P JOIN category C ON P.category_id = C.id WHERE status = 0 LIMIT :lop OFFSET :osf";
+            $sqlForPosts = "SELECT P.id, P.name, P.description, P.img, C.name AS category FROM blog P JOIN category C ON P.category_id = C.id WHERE status = 0 ORDER BY `id` DESC LIMIT :lop OFFSET :osf";
             $query = $pdo->prepare($sqlForPosts); 
             $query->bindValue(':lop', (int) trim($limit), PDO::PARAM_INT);
             $query->bindValue(':osf', (int) trim($offset), PDO::PARAM_INT);
@@ -60,7 +60,7 @@ if (!is_null($category) && is_null($search)) {
          $pages = ceil($count / $itemsPerPage);
 
          // posts
-         $sqlForPosts = "SELECT P.id, P.name, P.description, P.img, C.name AS category FROM blog P JOIN category C ON P.category_id = C.id WHERE status = 0 AND category_id = ?";
+         $sqlForPosts = "SELECT P.id, P.name, P.description, P.img, C.name AS category FROM blog P JOIN category C ON P.category_id = C.id WHERE status = 0 AND category_id = ? ORDER BY `id` DESC ";
          $query = $pdo->prepare($sqlForPosts); 
          $query->execute([$category]); 
          $blogs = $query->fetchAll(PDO::FETCH_OBJ);
@@ -88,7 +88,7 @@ $categories = $querycategories->fetchAll(PDO::FETCH_OBJ);
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="Búho Solutions">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
-        <meta name="description" content="FISPER es una consultoría de servicios empresariales en la que se abarca un gran espectro de servicios, manejando desde el área administrativa, el área contable, el área fiscal,  el área legal, tramitología y todo lo que incluya trámite ante instituciones gubernamentales.">
+        <meta name="description" content="FISPER es una consultoría de servicios empresariales en la que se abarca un gran espectro de servicios, manejando desde el área administrativa, el área contable, el área fiscal, el área legal, tramitología y todo lo que incluya trámite ante instituciones gubernamentales.">
         <!-- favicon icon -->
         <link rel="shortcut icon" href="client/images/logos/favicon-white.svg">
         <link rel="apple-touch-icon" href="client/images/logos/favicon-white.svg">
@@ -321,7 +321,7 @@ $categories = $querycategories->fetchAll(PDO::FETCH_OBJ);
                     <div class="row align-items-center">
                         
                         <div class="col-12 col-md-12 text-center last-paragraph-no-margin sm-margin-20px-bottom">
-                            <p>Fisper 2022 &copy; Desarrollado por  <a href="https://www.buho-solutions.com" target="_blank" class="text-decoration-line-bottom text-tussock text-white-hover font-weight-500">Buho Solutions</a></p>
+                            <p><a class="padding-two-right" href="admin/login.php"><i class="fa fa-user" aria-hidden="true"></i></a> Fisper 2022 &copy; Desarrollado por  <a href="https://www.buho-solutions.com" target="_blank" class="text-decoration-line-bottom text-tussock text-white-hover font-weight-500">Buho Solutions</a></p>
                         </div>
                         
                     </div>

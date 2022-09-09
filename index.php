@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="Búho Solutions">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
-        <meta name="description" content="FISPER es una consultoría de servicios empresariales en la que se abarca un gran espectro de servicios, manejando desde el área administrativa, el área contable, el área fiscal,  el área legal, tramitología y todo lo que incluya trámite ante instituciones gubernamentales.">
+        <meta name="description" content="FISPER es una consultoría de servicios empresariales en la que se abarca un gran espectro de servicios, manejando desde el área administrativa, el área contable, el área fiscal, el área legal, tramitología y todo lo que incluya trámite ante instituciones gubernamentales.">
         <!-- favicon icon -->
         <link rel="shortcut icon" href="client/images/logos/favicon-white.svg">
         <link rel="apple-touch-icon" href="client/images/logos/favicon-white.svg">
@@ -248,7 +248,7 @@
                         <p class="w-60 xl-w-100 text-white">Trascender en brindar servicio personalizado de contabilidad e impuestos de clientes, consultoría empresarial, capacitación, auditorías y asuntos legales. Dedicada a satisfacer las necesidades de nuestros clientes, ser un asesor estratégico implementando soluciones con oportunidad y dedicación al servicio y logro de las metas de nuestros clientes.
                             <br> <br>
                             Nuestra visión es ser una empresa líder en el ámbito contable, basándonos en la calidad y profesionalismo de nuestros servicios, brindando satisfacción a nuestros clientes. Respaldadas en la más alta confidencialidad y calidad de nuestros profesionales que dirigen, basadas en principios y valores a fin de contribuir al logro de los objetivos a corto, mediano y largo plazo y contribuir al desarrollo económico y humano de la comunidad.</p>
-                        <a href="Servicios.php" class="btn btn-fancy btn-large btn-white margin-20px-top">View services</a>
+                        <a href="Servicios.php" class="btn btn-fancy btn-large btn-white margin-20px-top">Ver mas.</a>
                     </div>
                     <div class="col-12 col-lg-6 cover-background md-h-550px sm-h-400px xs-h-300px wow animate__fadeInLeft" data-wow-delay="0.2s" style="background-image: url('client/images/mision.jpg');"></div>
                     
@@ -481,7 +481,7 @@
                     <div class="row align-items-center">
                         
                         <div class="col-12 col-md-12 text-center last-paragraph-no-margin sm-margin-20px-bottom">
-                            <p>Fisper 2022 &copy; Desarrollado por  <a href="https://www.buho-solutions.com" target="_blank" class="text-decoration-line-bottom text-tussock text-white-hover font-weight-500">Buho Solutions</a></p>
+                            <p><a class="padding-two-right" href="Admin/login.php"><i class="fa fa-user" aria-hidden="true"></i></a>  Fisper 2022 &copy; Desarrollado por  <a href="https://www.buho-solutions.com" target="_blank" class="text-decoration-line-bottom text-tussock text-white-hover font-weight-500">Buho Solutions</a></p>
                         </div>
                         
                     </div>
